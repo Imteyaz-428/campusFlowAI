@@ -8,20 +8,17 @@ from schemas.organization import OrganizationCreate,OrganizationUpdate
 def create_organization(db: Session, organization: OrganizationCreate):
 
     db_organization = Organization(
+
         name=organization.name,
+
         slug=organization.slug
+
     )
 
     db.add(db_organization)
-    try:
-        db.commit()
-        
-    except IntegrityError:
-        db.rollback()
-        raise HTTPException(
-            status_code=status.HTTP_409_CONFLICT,
-            detail="Organization slug already exists.")
-        
+
+    db.flush()
+
     db.refresh(db_organization)
 
     return db_organization

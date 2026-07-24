@@ -7,15 +7,8 @@ from models.organization import Organization
 from schemas.user import UserCreate,UserUpdate
 from core.security import hash_password,verify_password
 
-def create_user(db: Session,user: UserCreate):
-    organization = (db.query(Organization).filter(Organization.id == user.organization_id).first())
-
-    if organization is None:
-        raise HTTPException(
-            status_code=status.HTTP_404_NOT_FOUND,
-            detail="Organization not found."
-        )
-    
+def create_user(db: Session,user: UserCreate,organization_id: int):
+   
         
     existing_user = (db.query(User) .filter(User.email == user.email) .first())
     if existing_user:
@@ -29,7 +22,7 @@ def create_user(db: Session,user: UserCreate):
     email=user.email,
     password=hash_password(user.password),
     role=user.role,
-    organization_id=user.organization_id)
+    organization_id=organization_id)
     
     
     db.add(db_user)
@@ -48,9 +41,15 @@ def create_user(db: Session,user: UserCreate):
 
 
 
-def get_users(db: Session):
-    return db.query(User).all()
-
+def get_users(
+    db: Session,
+    organization_id: int
+):
+    return (
+        db.query(User)
+        .filter(User.organization_id == organization_id)
+        .all()
+    )
 
 def get_user_by_id(db: Session, user_id: int):
 

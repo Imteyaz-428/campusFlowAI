@@ -17,18 +17,25 @@ router = APIRouter(
 )
 
 
-@router.post( "/",response_model=UserResponse, status_code=status.HTTP_201_CREATED)
-def create_new_user(user: UserCreate,db: Session = Depends(get_db)):
+@router.post("/", response_model=UserResponse, status_code=status.HTTP_201_CREATED)
+def create_new_user(
+    user: UserCreate,
+    db: Session = Depends(get_db),
+    current_admin: User = Depends(require_role(UserRole.ADMIN))
+):
     return create_user(
         db=db,
-        user=user
+        user=user,
+        organization_id=current_admin.organization_id
     )
-    
     
 @router.get("/", response_model=List[UserResponse])
 def get_all_users( db: Session = Depends(get_db), current_admin: User = Depends(require_role(UserRole.ADMIN))):
 
-    return get_users(db)
+    return get_users(
+    db=db,
+    organization_id=current_admin.organization_id
+)
 
 
  

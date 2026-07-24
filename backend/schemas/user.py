@@ -10,7 +10,7 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str = Field( min_length=8, max_length=100)
     role: UserRole = Field(description="User role")
-    organization_id: int
+    
     
     
 class UserResponse(BaseModel):
@@ -26,12 +26,10 @@ class UserResponse(BaseModel):
         
         
 class UserUpdate(BaseModel):
-
     name: Optional[str] = Field(default=None, min_length=2, max_length=100)
     email: Optional[EmailStr] = None
-    password: Optional[str] = Field(default=None, min_length=8, max_length=30 )
+    password: Optional[str] = Field(default=None, min_length=8, max_length=30)
     role: Optional[UserRole] = None
-    organization_id: Optional[int] = None
     
     
 
