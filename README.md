@@ -199,37 +199,7 @@ Supported AI Providers:
 
 ---
 
-# 📸 Application Screenshots
 
-> Screenshots will be added after deployment.
-
-### Dashboard
-
-<!-- Add dashboard screenshot -->
-![Uploading Screenshot 2026-07-25 at 10.50.18 PM.png…]()
-
-
-### Upload Documents
-
-<!-- Add upload screenshot -->
-
-### Documents
-
-<!-- Add documents screenshot -->
-
-### AI Chat
-
-<!-- Add chat screenshot -->
-
-### Team Management
-
-<!-- Add team screenshot -->
-
-### Settings
-
-<!-- Add settings screenshot -->
-
----
 
 # 🏗️ System Architecture
 
