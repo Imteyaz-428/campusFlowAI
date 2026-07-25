@@ -206,6 +206,8 @@ Supported AI Providers:
 ### Dashboard
 
 <!-- Add dashboard screenshot -->
+![Uploading Screenshot 2026-07-25 at 10.50.18 PM.png…]()
+
 
 ### Upload Documents
 
