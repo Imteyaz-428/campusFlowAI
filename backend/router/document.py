@@ -21,7 +21,7 @@ from crud.document import create_document
 from core.dependencies import get_current_user
 from dependencies.database import get_db
 from services.background.document_processor import process_document
-from crud.document import get_document_by_id, delete_document, get_documents
+from crud.document import get_document_by_id, delete_document, get_documents,get_accessible_document
 
 UPLOAD_DIR = Path("uploads/documents")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
@@ -41,12 +41,11 @@ router = APIRouter(
 )
 def upload_document(
     background_tasks: BackgroundTasks,
-    title: str = Form(...),
     file: UploadFile = File(...),
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-
+    title = file.filename.rsplit(".", 1)[0]
     if file.content_type != "application/pdf":
         raise HTTPException(
             status_code=400,
@@ -177,11 +176,11 @@ def remove_document(
     db: Session = Depends(get_db),
     current_user: User = Depends(get_current_user),
 ):
-    document = get_document(
-        db=db,
-        document_id=document_id,
-        organization_id=current_user.organization_id,
-    )
+    document = get_accessible_document(
+    db=db,
+    document_id=document_id,
+    organization_id=current_user.organization_id,
+)
 
     if not document:
         raise HTTPException(

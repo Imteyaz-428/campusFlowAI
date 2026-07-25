@@ -1,9 +1,10 @@
-# 🚀 Enterprise Multi-Tenant RAG Platform
+# 🚀 Enterprise AI Knowledge Management Platform
 
-> A production-oriented AI knowledge management backend that lets organizations upload documents, run semantic search over them, and chat with their private knowledge base using Retrieval-Augmented Generation (RAG).
+> A production-ready, full-stack Retrieval-Augmented Generation (RAG) platform that enables organizations to securely upload documents, perform semantic search, and interact with their private knowledge base using AI-powered conversations.
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.139-green)
+![React](https://img.shields.io/badge/React-19-61DAFB)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-pgvector-blue)
 ![Redis](https://img.shields.io/badge/Redis-Caching-red)
 ![Docker](https://img.shields.io/badge/Docker-Compose-2496ED)
@@ -13,20 +14,21 @@
 
 # 📖 Overview
 
-Enterprise RAG Platform is a multi-tenant, RAG-as-a-Service backend built with **FastAPI**, **PostgreSQL + pgvector**, and **Redis**.
+The **Enterprise AI Knowledge Management Platform** is a production-oriented, multi-tenant AI application built with **FastAPI**, **React**, **PostgreSQL**, **pgvector**, and **Redis**.
 
-Each organization can upload PDF documents, have them automatically chunked and embedded, and let their users chat with that knowledge base — with every answer grounded in retrieved source chunks and cited back to the originating document.
+Organizations can upload PDF documents, automatically extract and embed their contents, and interact with their private knowledge base through an AI-powered chat interface. Every response is generated using Retrieval-Augmented Generation (RAG), ensuring answers are grounded in the organization's own documents rather than relying solely on the language model.
 
-The platform is built around a handful of enterprise engineering patterns:
+The project follows enterprise software engineering practices including:
 
-- Multi-Tenant Architecture (organization-scoped data isolation)
+- Multi-Tenant Architecture
 - Role-Based Access Control (RBAC)
 - Service Layer Architecture
-- Provider Pattern (pluggable LLM backends with fallback)
-- Retrieval-Augmented Generation (RAG)
+- Provider Pattern
 - Background Document Processing
-- Redis Response Caching
+- Retrieval-Augmented Generation (RAG)
+- Semantic Search using pgvector
 - Streaming AI Responses (SSE)
+- Redis Response Caching
 
 ---
 
@@ -34,109 +36,229 @@ The platform is built around a handful of enterprise engineering patterns:
 
 ## 🔐 Authentication & Security
 
-- JWT authentication (OAuth2 Bearer flow, `python-jose`)
-- Password hashing with `bcrypt` via `passlib`
-- Secrets (JWT key, algorithm, expiry) loaded from environment, not hardcoded
-- Role-Based Access Control (`admin` / regular user)
-- Organization-scoped authorization on every resource (users, documents, chat sessions) — one tenant cannot read another tenant's data
+- JWT Authentication (OAuth2 Password Flow)
+- Password hashing using bcrypt
+- Role-Based Access Control (Admin / Employee)
+- Organization-scoped authorization
+- Secure password update
+- User profile management
+- Environment-based secret management
+
+---
 
 ## 🏢 Multi-Tenant Architecture
 
-- Organization management (CRUD)
-- User management scoped to an organization
-- Documents, chat sessions, and messages all carry `organization_id`
-- Every read/write path checks the requester's organization before returning data
+- Organization management
+- Organization-scoped users
+- Organization-scoped documents
+- Organization-scoped chat sessions
+- Complete tenant isolation
+- Protected API endpoints
 
-## 📄 Document Processing
+---
 
-- PDF upload with content-type, size, and empty-file validation
-- UUID-based file storage on disk
-- Asynchronous background processing (FastAPI `BackgroundTasks`) so uploads return immediately
-- Document status tracking (`processing` → `completed` / `failed`)
-- Text extraction via **PyMuPDF**
-- Fixed-size chunking with overlap
-- Embeddings via **Voyage AI** (`voyage-3-large`)
-- Vector storage and cosine-similarity search via **pgvector**
+## 📄 Document Management
 
-## 🤖 AI & RAG
+- PDF upload
+- Drag & Drop upload interface
+- Multiple file upload
+- File validation
+- Background document processing
+- Automatic text extraction
+- Chunk generation
+- Embedding generation
+- Document status tracking
+- Document search
+- Pagination
+- Delete documents
 
-- Semantic search over an organization's documents (top-K cosine similarity)
-- Multi-document retrieval with de-duplicated source citations
-- Centralized prompt-building service
-- Pluggable multi-provider LLM layer: **Gemini → Groq → DeepSeek**, with automatic retry and provider fallback if one fails
+---
 
-## 💬 Chat System
+## 🤖 AI & Retrieval-Augmented Generation
 
-- Persistent chat sessions per user, per organization
-- Automatic session creation and title generation from the first message
-- Full conversation history stored and replayed into the prompt
-- Streaming responses over Server-Sent Events (`/chat/stream`)
-- Non-streaming JSON responses (`/chat`) for simpler clients
-- Session listing, retrieval, and deletion
+- Semantic Search
+- Vector Similarity Search
+- Multi-document Retrieval
+- Prompt Builder
+- Conversation History
+- AI-powered Knowledge Base
+- Streaming AI Responses
+- Source-aware Retrieval
+- Automatic Retry Logic
+- Multi-provider AI Fallback
+
+Supported AI Providers:
+
+- Gemini
+- Groq
+- DeepSeek
+
+---
+
+## 💬 AI Chat
+
+- Real-time AI conversations
+- Streaming responses
+- Chat history
+- Persistent chat sessions
+- Automatic session titles
+- Multiple chat sessions
+- Session management
+- Enterprise chat interface
+
+---
+
+## 👥 Team Management
+
+- Organization users
+- Admin dashboard
+- Create users
+- Update users
+- Delete users
+- Role management
+
+---
+
+## ⚙️ Account Settings
+
+- Profile management
+- Update profile
+- Change password
+- Secure account settings
+
+---
 
 ## ⚡ Performance
 
-- Redis caching of chat answers, keyed by organization + normalized question
-- Background tasks for document ingestion (non-blocking upload endpoint)
-- Retry logic and automatic fallback across AI providers
+- Redis caching
+- Background Tasks
+- Fast document processing
+- Async API endpoints
+- Optimized semantic search
+- Streaming responses
 
 ---
 
 # 🛠️ Tech Stack
 
-### Backend
+## Backend
+
 - FastAPI
 - SQLAlchemy 2.0
-- PostgreSQL + pgvector
+- PostgreSQL
+- pgvector
 - Redis
 - Pydantic v2
 
-### AI / ML
-- Voyage AI (embeddings)
-- Gemini, Groq, DeepSeek (generation, with fallback)
-- PyMuPDF (PDF text extraction)
+---
 
-### Security
-- JWT (`python-jose`)
-- OAuth2 Password Flow
-- bcrypt (`passlib`)
+## Frontend
 
-### DevOps
-- Docker + Docker Compose (Postgres/pgvector, Redis, backend service)
-- Kubernetes manifests — *planned*
+- React
+- Vite
+- React Router
+- Axios
+- Tailwind CSS
+- React Hook Form
+- Lucide React
 
 ---
 
-# 🏗️ Architecture
+## AI / ML
+
+- Voyage AI Embeddings
+- Gemini
+- Groq
+- DeepSeek
+- PyMuPDF
+
+---
+
+## Security
+
+- JWT Authentication
+- OAuth2 Password Flow
+- bcrypt
+- passlib
+- python-jose
+
+---
+
+## DevOps
+
+- Docker
+- Docker Compose
+- PostgreSQL Container
+- Redis Container
+
+**Upcoming**
+
+- Kubernetes
+- CI/CD
+- Monitoring
+
+---
+
+# 📸 Application Screenshots
+
+> Screenshots will be added after deployment.
+
+### Dashboard
+
+<!-- Add dashboard screenshot -->
+
+### Upload Documents
+
+<!-- Add upload screenshot -->
+
+### Documents
+
+<!-- Add documents screenshot -->
+
+### AI Chat
+
+<!-- Add chat screenshot -->
+
+### Team Management
+
+<!-- Add team screenshot -->
+
+### Settings
+
+<!-- Add settings screenshot -->
+
+---
+
+# 🏗️ System Architecture
 
 ```text
-                           User
-                             │
-                             ▼
-                     Authentication
-                             │
-                             ▼
-                     FastAPI Router
-                             │
-                             ▼
-                      ChatService
-                             │
-      ┌──────────────────────┴──────────────────────┐
-      ▼                                              ▼
-RetrievalService                              Session Service
-      │
-      ▼
-Prompt Service
-      │
-      ▼
-AI Service (retry + fallback)
-      │
- ┌────┴──────────────────┐
- ▼                        ▼
-Gemini              Groq → DeepSeek
-      │
-      ▼
-Generated Response (+ citations)
+                        React Frontend
+                               │
+                               ▼
+                     JWT Authentication
+                               │
+                               ▼
+                        FastAPI Backend
+                               │
+          ┌────────────────────┼────────────────────┐
+          ▼                    ▼                    ▼
+     User Service        Document Service      Chat Service
+                               │
+                               ▼
+                      Retrieval Service
+                               │
+                               ▼
+                       Prompt Builder
+                               │
+                               ▼
+                          AI Service
+                               │
+          ┌────────────────────┼────────────────────┐
+          ▼                    ▼                    ▼
+       Gemini               Groq              DeepSeek
+                               │
+                               ▼
+                     Generated AI Response
 ```
 
 ---
@@ -144,38 +266,55 @@ Generated Response (+ citations)
 # 🔄 RAG Pipeline
 
 ```text
-Upload PDF
-     │
-     ▼
-Validate (type, size, non-empty)
-     │
-     ▼
-Store file (UUID filename) + create Document row
-     │
-     ▼
-Background Task ─┐
-                 ├─ Extract Text (PyMuPDF)
-                 ├─ Chunk Text (fixed size + overlap)
-                 ├─ Generate Embeddings (Voyage AI)
-                 └─ Store chunks + embeddings (pgvector)
-     │
-     ▼
-User asks a question
-     │
-     ▼
-Embed question → Cosine similarity search (org-scoped)
-     │
-     ▼
-Retrieve top-K chunks
-     │
-     ▼
-Build prompt (history + chunks + question)
-     │
-     ▼
-AI Service → Gemini / Groq / DeepSeek
-     │
-     ▼
-Answer + citations → cached in Redis → returned to user
+                    Upload PDF
+                        │
+                        ▼
+                 Validate Document
+                        │
+                        ▼
+             Store PDF in Upload Folder
+                        │
+                        ▼
+           Background Document Processing
+                        │
+        ┌───────────────┼────────────────┐
+        ▼               ▼                ▼
+  Extract Text     Chunk Document   Generate Embeddings
+                        │
+                        ▼
+             Store Chunks + Embeddings
+                 PostgreSQL + pgvector
+                        │
+                        ▼
+               User Asks a Question
+                        │
+                        ▼
+             Generate Query Embedding
+                        │
+                        ▼
+           Semantic Vector Similarity Search
+                        │
+                        ▼
+             Retrieve Relevant Chunks
+                        │
+                        ▼
+            Build Prompt + Chat History
+                        │
+                        ▼
+               AI Provider Selection
+                        │
+        ┌───────────────┼────────────────┐
+        ▼               ▼                ▼
+      Gemini          Groq          DeepSeek
+                        │
+                        ▼
+              Generate Final Response
+                        │
+                        ▼
+              Cache Result in Redis
+                        │
+                        ▼
+         Stream Response to React Frontend
 ```
 
 ---
@@ -186,95 +325,140 @@ Answer + citations → cached in Redis → returned to user
 enterprise-rag-platform/
 │
 ├── backend/
-│   ├── core/            # security (JWT/hashing), dependencies, enums
-│   ├── crud/            # DB access layer
-│   ├── database/        # SQLAlchemy engine/session setup
-│   ├── dependencies/    # FastAPI dependency providers (DB session)
-│   ├── models/          # SQLAlchemy ORM models
-│   ├── router/          # API route definitions
-│   ├── schemas/         # Pydantic request/response schemas
+│   ├── core/
+│   ├── crud/
+│   ├── models/
+│   ├── router/
+│   ├── schemas/
 │   ├── services/
-│   │   ├── ai/          # provider pattern (Gemini/Groq/DeepSeek) + prompts
-│   │   ├── background/  # document processing pipeline
-│   │   ├── cache/       # Redis service
-│   │   └── chat/        # chat orchestration, retrieval, prompt building
-│   ├── utils/           # chunking, embeddings, PDF extraction, logging, retry
-│   ├── Dockerfile
-│   ├── docker-compose.yml
+│   ├── utils/
+│   ├── uploads/
 │   └── app.py
 │
-├── frontend/            # planned (React)
-├── docker/              # deployment configs (planned)
-├── kubernetes/          # K8s manifests (planned)
-└── README.md
+├── frontend/
+│   ├── components/
+│   ├── pages/
+│   ├── routes/
+│   ├── services/
+│   └── App.jsx
+│
+├── docker-compose.yml
+├── README.md
+└── requirements.txt
 ```
 
 ---
 
-# 📡 API Overview
+# 🖥️ Frontend
 
-## Users & Auth
+The React frontend provides a clean enterprise dashboard for managing documents, users, and AI conversations.
 
-| Method | Endpoint | Description |
-|--------|----------|--------------|
-| POST | `/users/` | Register a new user |
-| POST | `/users/login` | Login (OAuth2 form), returns JWT |
-| GET | `/users/me` | Get the current authenticated user |
-| GET | `/users/{id}` | Get a user by ID (same org only) |
-| GET | `/users/` | List users (admin only) |
-| PUT | `/users/{id}` | Update a user (self or admin) |
-| DELETE | `/users/{id}` | Delete a user (admin only) |
+### Features
+
+- Login & Authentication
+- Dashboard
+- Upload Documents
+- Document Management
+- AI Chat
+- Team Management
+- Account Settings
+- Responsive Layout
+
+---
+
+# ⚙️ Backend
+
+The FastAPI backend handles authentication, document processing, vector search, and AI orchestration.
+
+### Features
+
+- JWT Authentication
+- RBAC
+- Multi-Tenant Architecture
+- Background Document Processing
+- Semantic Search
+- RAG Pipeline
+- Redis Caching
+- Streaming Chat API
+
+---
+
+# 📡 Main API Endpoints
+
+## Authentication
+
+| Method | Endpoint |
+|---------|----------|
+| POST | `/users/login` |
+| GET | `/users/me` |
+
+---
+
+## Users
+
+| Method | Endpoint |
+|---------|----------|
+| POST | `/users` |
+| GET | `/users` |
+| GET | `/users/{id}` |
+| PUT | `/users/{id}` |
+| DELETE | `/users/{id}` |
+
+---
 
 ## Organizations
 
-| Method | Endpoint | Description |
-|--------|----------|--------------|
-| POST | `/organizations/` | Create an organization |
-| GET | `/organizations/` | List organizations (admin only) |
-| GET | `/organizations/{id}` | Get an organization (same org only) |
-| PUT | `/organizations/{id}` | Update an organization (admin only) |
-| DELETE | `/organizations/{id}` | Delete an organization (admin only) |
-
-## Documents
-
-| Method | Endpoint | Description |
-|--------|----------|--------------|
-| POST | `/documents/upload` | Upload a PDF, kicks off background processing |
-| GET | `/documents/{id}` | Get document status/details (same org only) |
-
-## Chat
-
-| Method | Endpoint | Description |
-|--------|----------|--------------|
-| POST | `/chat` | Ask a question, get a full JSON response |
-| POST | `/chat/stream` | Ask a question, get an SSE token stream |
-| GET | `/chat/sessions` | List the current user's chat sessions |
-| GET | `/chat/sessions/{id}` | Get a session with full message history |
-| DELETE | `/chat/sessions/{id}` | Delete a chat session |
+| Method | Endpoint |
+|---------|----------|
+| POST | `/organizations` |
+| GET | `/organizations` |
+| PUT | `/organizations/{id}` |
+| DELETE | `/organizations/{id}` |
 
 ---
 
-# 🚀 Quick Start
+## Documents
 
-### Option A — Docker Compose (recommended)
+| Method | Endpoint |
+|---------|----------|
+| POST | `/documents/upload` |
+| GET | `/documents` |
+| GET | `/documents/{id}` |
+| DELETE | `/documents/{id}` |
+
+---
+
+## Chat
+
+| Method | Endpoint |
+|---------|----------|
+| POST | `/chat` |
+| POST | `/chat/stream` |
+| GET | `/chat/sessions` |
+| GET | `/chat/sessions/{id}` |
+| DELETE | `/chat/sessions/{id}` |
+
+---
+
+# 🚀 Getting Started
+
+## Clone Repository
 
 ```bash
 git clone https://github.com/Imteyaz-428/enterprise-rag-platform.git
-cd enterprise-rag-platform/backend
 
-cp .env.example .env   # fill in your keys, see below
-docker compose up --build
+cd enterprise-rag-platform
 ```
 
-This spins up Postgres (with pgvector), Redis, and the FastAPI backend together on `http://localhost:8000`.
+---
 
-### Option B — Local
+## Backend Setup
 
 ```bash
-git clone https://github.com/Imteyaz-428/enterprise-rag-platform.git
-cd enterprise-rag-platform/backend
+cd backend
 
 python -m venv .venv
+
 source .venv/bin/activate
 
 pip install -r requirements.txt
@@ -282,130 +466,216 @@ pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
-### Environment Variables
+---
 
-Create a `.env` file inside `backend/`:
+## Frontend Setup
+
+```bash
+cd frontend
+
+npm install
+
+npm run dev
+```
+
+---
+
+## Docker
+
+```bash
+docker compose up --build
+```
+
+---
+
+# 🔑 Environment Variables
+
+Create a `.env` file inside the backend folder.
 
 ```env
-DATABASE_URL=postgresql://postgres:postgres@localhost:5433/enterprise_rag
+DATABASE_URL=
 
-SECRET_KEY=replace-with-a-long-random-value
+SECRET_KEY=
+
 ALGORITHM=HS256
+
 ACCESS_TOKEN_EXPIRE_MINUTES=180
 
 VOYAGE_API_KEY=
+
 GEMINI_API_KEY=
+
 GROQ_API_KEY=
+
 DEEPSEEK_API_KEY=
 
 REDIS_HOST=localhost
+
 REDIS_PORT=6379
 ```
 
 ---
 
-# 🧪 Example Workflow
+# 🔄 Project Workflow
 
 ```text
-Register user → Login → Upload PDF
-                              │
-                              ▼
-                    Background Processing
-                    (extract → chunk → embed → store)
-                              │
-                              ▼
-                        Ask a question
-                              │
-                              ▼
-              Semantic search over org's documents
-                              │
-                              ▼
-                 Retrieve relevant chunks + build prompt
-                              │
-                              ▼
-                  Generate answer (with fallback)
-                              │
-                              ▼
-        Save to chat history → cache in Redis → return
-                  answer + source citations
+Login
+   │
+   ▼
+Upload PDF
+   │
+   ▼
+Extract Text
+   │
+   ▼
+Chunk Document
+   │
+   ▼
+Generate Embeddings
+   │
+   ▼
+Store in pgvector
+   │
+   ▼
+Ask Question
+   │
+   ▼
+Semantic Search
+   │
+   ▼
+Retrieve Context
+   │
+   ▼
+Generate AI Response
+   │
+   ▼
+Display Answer
 ```
 
 ---
+
+# 🎯 Current Features
+
+- ✅ JWT Authentication
+- ✅ Role-Based Access Control
+- ✅ Multi-Tenant Architecture
+- ✅ PDF Upload
+- ✅ Background Processing
+- ✅ Semantic Search
+- ✅ pgvector Integration
+- ✅ Redis Caching
+- ✅ Streaming AI Chat
+- ✅ Chat History
+- ✅ User Management
+- ✅ Team Management
+- ✅ Account Settings
+- ✅ Document Management
+- ✅ Enterprise Dashboard
+
 
 # 📊 Project Status
 
 ## ✅ Completed
 
-**Backend Core**
-- JWT authentication, RBAC, organization-scoped authorization
-- User & organization management
+### Backend
+- JWT Authentication
+- Role-Based Access Control (RBAC)
+- Multi-Tenant Architecture
+- Organization Management
+- User Management
+- Document Upload & Processing
+- Semantic Search with pgvector
+- Retrieval-Augmented Generation (RAG)
+- Multi-Provider AI (Gemini, Groq, DeepSeek)
+- Background Tasks
+- Redis Caching
+- Streaming AI Responses
+- Chat Session Management
 
-**Document Processing**
-- Upload, validation, background processing, status tracking
-- Text extraction, chunking, Voyage AI embeddings, pgvector storage
+### Frontend
+- Authentication
+- Dashboard
+- Upload Documents
+- Document Management
+- AI Chat
+- Team Management
+- Account Settings
+- Profile Update
+- Password Change
 
-**AI & RAG**
-- Semantic search, multi-document retrieval, prompt builder, citations
-- Multi-provider AI support with retry and fallback
-
-**Chat**
-- Persistent sessions, conversation history, SSE streaming
-
-**Performance & DevOps**
-- Redis caching, background tasks
-- Dockerfile + Docker Compose (Postgres/pgvector, Redis, backend)
-
-## 🚧 In Progress
-- React frontend
-
-## 📅 Planned
-- Kubernetes deployment manifests
-- CI/CD pipeline
-- Rate limiting
-- Monitoring & structured logging
-- Automated test suite
+### DevOps
+- Docker
+- Docker Compose
 
 ---
 
 # 🗺️ Roadmap
 
-## ✅ Phase 1 — Backend
-Authentication · RBAC · Multi-Tenant Architecture · Document Processing · RAG Pipeline · Chat System · Streaming · Redis Caching · Background Tasks
+## ✅ Completed
 
-## 🚧 Phase 2 — Frontend
-React Dashboard · Auth Pages · Document Management · Chat Interface · Citation UI
+- Authentication & Authorization
+- Multi-Tenant Architecture
+- Document Processing Pipeline
+- Semantic Search
+- AI Chat
+- Enterprise Dashboard
+- Docker Support
 
-## ✅ / 🚧 Phase 3 — Deployment
-Docker & Docker Compose ✅ · Kubernetes 🚧 · Managed hosting for frontend & backend 🚧
+## 🚧 In Progress
 
-## 📦 Phase 4 — Production Hardening
-Monitoring · Logging · Rate Limiting · CI/CD · Automated Tests
+- Kubernetes Deployment
+- CI/CD Pipeline
+- Source Citations
+- Document Preview
+
+## 📌 Planned
+
+- Hybrid Search
+- Monitoring & Logging
+- Automated Testing
+- Rate Limiting
+- AI Analytics Dashboard
 
 ---
 
-# 📚 Key Learnings
+# 📚 What I Learned
 
-Building this project involved hands-on work with:
+This project helped me gain practical experience with:
 
-- FastAPI, SQLAlchemy, PostgreSQL, pgvector
-- Retrieval-Augmented Generation & semantic search
-- Vector embeddings and prompt engineering
-- JWT authentication and multi-tenant authorization design
-- Provider pattern for interchangeable LLM backends
-- Service layer architecture and separation of concerns
-- Background task processing and Redis caching
-- Server-Sent Events for streaming AI responses
+- Building production-ready REST APIs using FastAPI
+- Designing Multi-Tenant Architectures
+- Implementing JWT Authentication & RBAC
+- Working with PostgreSQL and pgvector
+- Building Retrieval-Augmented Generation (RAG) systems
+- Semantic Search and Vector Embeddings
+- Integrating multiple LLM providers
+- Background Task Processing
+- Redis Caching
+- Docker-based development
+- Building a full-stack application with React and FastAPI
+
+---
+
+# 💡 Future Improvements
+
+- Kubernetes Deployment
+- GitHub Actions CI/CD
+- Source Citation Viewer
+- PDF Preview
+- Hybrid Search (Vector + Keyword)
+- Observability & Monitoring
+- Unit & Integration Tests
 
 ---
 
 # 🤝 Contributing
 
-Contributions, suggestions, and feedback are welcome.
+Contributions, suggestions, and feedback are always welcome.
 
 1. Fork the repository
 2. Create a new branch
 3. Commit your changes
-4. Push to your fork
+4. Push your branch
 5. Open a Pull Request
 
 ---
@@ -419,7 +689,10 @@ This project is licensed under the **MIT License**.
 # 👨‍💻 Author
 
 **Imteyaz Alam**
+
 B.Tech – Artificial Intelligence & Machine Learning
+
+### Connect with me
 
 - GitHub: https://github.com/Imteyaz-428
 - LinkedIn: https://linkedin.com/in/imteyaz428
@@ -428,4 +701,6 @@ B.Tech – Artificial Intelligence & Machine Learning
 
 ## ⭐ Support
 
-If you found this project useful, consider giving it a ⭐ on GitHub.
+If you found this project helpful, consider giving it a ⭐ on GitHub.
+
+It helps others discover the project and motivates me to continue improving it.

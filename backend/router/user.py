@@ -4,8 +4,8 @@ from typing import List
 from core.security import create_access_token
 from core.dependencies import get_current_user,require_role, UserRole
 from dependencies.database import get_db
-from crud.user import create_user, get_users,get_user_by_id,update_user, delete_user, authenticate_user
-from schemas.user import UserCreate, UserResponse,UserUpdate
+from crud.user import create_user, get_users,get_user_by_id,update_user, delete_user, authenticate_user,change_password
+from schemas.user import UserCreate, UserResponse,UserUpdate,ChangePassword
 from schemas.auth import Token
 from fastapi.security import OAuth2PasswordRequestForm
 from models.user import User
@@ -38,7 +38,18 @@ def get_all_users( db: Session = Depends(get_db), current_admin: User = Depends(
 )
 
 
- 
+@router.put("/change-password", status_code=status.HTTP_200_OK)
+def update_password(
+    data: ChangePassword,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return change_password(
+        db=db,
+        user=current_user,
+        current_password=data.current_password,
+        new_password=data.new_password,
+    )
     
 @router.put( "/{user_id}",response_model=UserResponse, status_code=status.HTTP_200_OK)
 def update_existing_user(user_id: int, user_update: UserUpdate, db: Session = Depends(get_db),current_user: User = Depends(get_current_user)):
@@ -102,6 +113,8 @@ def login(
     }
 
 
+
+
 @router.get("/me", response_model=UserResponse)
 def get_me(current_user: User = Depends(get_current_user)):
 
@@ -130,3 +143,6 @@ def get_user(user_id: int,db: Session = Depends(get_db),current_user: User = Dep
         )
     
     return user
+
+
+

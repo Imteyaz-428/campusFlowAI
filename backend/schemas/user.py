@@ -31,5 +31,15 @@ class UserUpdate(BaseModel):
     password: Optional[str] = Field(default=None, min_length=8, max_length=30)
     role: Optional[UserRole] = None
     
+class UserUpdate(BaseModel):
+    name: str
+
+
+class ChangePassword(BaseModel):
+    current_password: str
+    new_password: str
     
+class ChangePassword(BaseModel):
+    current_password: str
+    new_password: str
 

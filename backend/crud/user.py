@@ -4,7 +4,7 @@ from sqlalchemy.orm import Session
 
 from models.user import User
 from models.organization import Organization
-from schemas.user import UserCreate,UserUpdate
+from schemas.user import UserCreate,UserUpdate,ChangePassword,UserResponse
 from core.security import hash_password,verify_password
 
 def create_user(db: Session,user: UserCreate,organization_id: int):
@@ -147,3 +147,27 @@ def authenticate_user(db, email, password):
         return None
 
     return user
+
+
+
+
+def change_password(
+    db: Session,
+    user: User,
+    current_password: str,
+    new_password: str,
+):
+    if not verify_password(current_password, user.password):
+        raise HTTPException(
+            status_code=400,
+            detail="Current password is incorrect.",
+        )
+
+    user.password = hash_password(new_password)
+
+    db.commit()
+    db.refresh(user)
+
+    return {
+        "message": "Password updated successfully."
+    }
