@@ -14,7 +14,17 @@ from router.chat import router as chat_router
 
 app = FastAPI()
 
+
 Base.metadata.create_all(bind=engine)
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app.include_router(organization_router)
 app.include_router(user_router)

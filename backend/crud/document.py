@@ -39,3 +39,17 @@ def update_document_status( db,document_id: int, status: str):
     db.commit()
     db.refresh(document)
     return document
+
+def get_documents(db, organization_id):
+    return (
+        db.query(Document)
+        .filter(Document.organization_id == organization_id)
+        .order_by(Document.uploaded_at.desc())
+        .all()
+    )
+    
+
+
+def delete_document(db, document):
+    db.delete(document)
+    db.commit()

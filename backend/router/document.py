@@ -21,7 +21,7 @@ from crud.document import create_document
 from core.dependencies import get_current_user
 from dependencies.database import get_db
 from services.background.document_processor import process_document
-from crud.document import get_document_by_id
+from crud.document import get_document_by_id, delete_document, get_documents
 
 UPLOAD_DIR = Path("uploads/documents")
 UPLOAD_DIR.mkdir(parents=True, exist_ok=True)
@@ -131,3 +131,69 @@ def get_document(
         )
 
     return document
+
+
+@router.get(
+    "",
+    response_model=list[DocumentResponse],
+)
+def list_documents(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    return get_documents(
+        db=db,
+        organization_id=current_user.organization_id,
+    )
+    
+
+@router.get(
+    "/{document_id}",
+    response_model=DocumentResponse,
+)
+def get_document_by_id(
+    document_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    document = get_document(
+        db=db,
+        document_id=document_id,
+        organization_id=current_user.organization_id,
+    )
+
+    if not document:
+        raise HTTPException(
+            status_code=404,
+            detail="Document not found",
+        )
+
+    return document
+
+
+@router.delete("/{document_id}")
+def remove_document(
+    document_id: int,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    document = get_document(
+        db=db,
+        document_id=document_id,
+        organization_id=current_user.organization_id,
+    )
+
+    if not document:
+        raise HTTPException(
+            status_code=404,
+            detail="Document not found",
+        )
+
+    delete_document(
+        db=db,
+        document=document,
+    )
+
+    return {
+        "message": "Document deleted successfully"
+    }
