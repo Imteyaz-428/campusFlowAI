@@ -5,6 +5,8 @@ import Register from "../pages/Register/Register";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Documents from "../pages/Documents/Documents";
 import Chat from "../pages/Chat/Chat";
+import Signup from "../pages/Signup/Signup";
+import ProtectedRoute from "./ProtectedRoute";
 
 function AppRoutes() {
   return (
@@ -14,6 +16,7 @@ function AppRoutes() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/documents" element={<Documents />} />
       <Route path="/chat" element={<Chat />} />
+      <Route path="/signup" element={<Signup/>} />
     </Routes>
   );
 }

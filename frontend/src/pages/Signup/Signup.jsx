@@ -1,12 +1,13 @@
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-
-import AuthInput from "../../components/auth/AuthInput";
-import { login } from "../../services/auth";
 import { saveToken } from "../../utils/token";
 
-function Login() {
+
+import AuthInput from "../../components/auth/AuthInput";
+import { signup } from "../../services/auth";
+
+function Signup() {
   const navigate = useNavigate();
 
   const {
@@ -17,18 +18,19 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await login(data);
+      const res = await signup(data);
 
       saveToken(res.data.access_token);
 
-      toast.success("Login successful.");
+      toast.success("Workspace created successfully.");
 
       reset();
 
       navigate("/dashboard");
+
     } catch (err) {
       toast.error(
-        err.response?.data?.detail || "Invalid email or password."
+        err.response?.data?.detail || "Signup failed."
       );
     }
   };
@@ -40,44 +42,55 @@ function Login() {
         className="bg-white p-8 rounded-xl shadow-md w-full max-w-md"
       >
         <h1 className="text-3xl font-bold text-center mb-6">
-          Login
+          Create Workspace
         </h1>
+
+        <AuthInput
+          label="Organization Name"
+          name="organization_name"
+          register={register}
+          placeholder="OpenAI"
+        />
+
+        <AuthInput
+          label="Organization Slug"
+          name="organization_slug"
+          register={register}
+          placeholder="openai"
+        />
+
+        <AuthInput
+          label="Name"
+          name="name"
+          register={register}
+          placeholder="Imteyaz Alam"
+        />
 
         <AuthInput
           label="Email"
           type="email"
           name="email"
-          placeholder="abc@gmail.com"
           register={register}
+          placeholder="imteyaz@gmail.com"
         />
 
         <AuthInput
           label="Password"
           type="password"
           name="password"
-          placeholder="********"
           register={register}
+          placeholder="********"
         />
 
         <button
           type="submit"
           className="w-full mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800"
         >
-          Login
+          Create Workspace
         </button>
-
-        <p className="text-center mt-5">
-          Don't have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-blue-600"
-          >
-            Sign Up
-          </Link>
-        </p>
       </form>
     </div>
   );
 }
 
-export default Login;
+export default Signup;
