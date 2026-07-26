@@ -1,6 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
+import CitationList from "./CitationList";
+
 function MessageBubble({ message }) {
   const isUser = message.role === "user";
 
@@ -18,7 +20,7 @@ function MessageBubble({ message }) {
         }`}
       >
         <p
-          className={`text-xs font-semibold mb-3 ${
+          className={`mb-3 text-xs font-semibold ${
             isUser ? "text-blue-100" : "text-gray-500"
           }`}
         >
@@ -26,14 +28,20 @@ function MessageBubble({ message }) {
         </p>
 
         <div
-          className={`leading-7 text-[15px] ${
-            isUser ? "text-white" : "text-gray-800"
+          className={`prose prose-sm max-w-none leading-7 ${
+            isUser
+              ? "prose-invert text-white"
+              : "text-gray-800"
           }`}
         >
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {message.content}
           </ReactMarkdown>
         </div>
+
+        {!isUser && (
+          <CitationList citations={message.citations} />
+        )}
       </div>
     </div>
   );

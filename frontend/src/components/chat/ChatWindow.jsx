@@ -21,12 +21,15 @@ function ChatWindow({
 
       <div className="mx-auto flex max-w-5xl flex-col px-8 py-8">
 
-        {messages.map((message, index) => (
-          <MessageBubble
-            key={index}
-            message={message}
-          />
-        ))}
+      {messages.map((message, index) => {
+  
+  return (
+    <MessageBubble
+      key={index}
+      message={message}
+    />
+  );
+})}
 
         {loading && <TypingIndicator />}
 

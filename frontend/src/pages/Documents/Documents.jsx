@@ -4,7 +4,7 @@ import toast from "react-hot-toast";
 
 import Layout from "../../components/layout/Layout";
 import PageHeader from "../../components/common/PageHeader";
-import UploadBox from "../../components/document/UploadBox";
+
 import DocumentTable from "../../components/document/DocumentTable";
 
 import {

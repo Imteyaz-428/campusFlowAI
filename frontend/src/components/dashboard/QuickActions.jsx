@@ -24,7 +24,7 @@ function QuickActions({ isAdmin }) {
       <div className="p-4 space-y-3">
 
         <button
-          onClick={() => navigate("/documents")}
+          onClick={() => navigate("/upload")}
           className="w-full flex items-center justify-between rounded-xl border p-4 hover:border-blue-500 hover:bg-blue-50 transition-all"
         >
           <div className="flex items-center gap-3">

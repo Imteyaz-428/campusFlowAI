@@ -1,5 +1,6 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate, Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 
 import AuthInput from "../../components/auth/AuthInput";
@@ -8,6 +9,7 @@ import { saveToken } from "../../utils/token";
 
 function Login() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -17,6 +19,8 @@ function Login() {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
+
       const res = await login(data);
 
       saveToken(res.data.access_token);
@@ -28,54 +32,68 @@ function Login() {
       navigate("/dashboard");
     } catch (err) {
       toast.error(
-        err.response?.data?.detail || "Invalid email or password."
+        err.response?.data?.detail ||
+        "Invalid email or password."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-md"
-      >
-        <h1 className="text-3xl font-bold text-center mb-6">
-          Login
-        </h1>
+    <div className="flex min-h-screen items-center justify-center bg-slate-100 px-6">
+      <div className="w-full max-w-2xl rounded-3xl bg-white p-14 shadow-2xl">
 
-        <AuthInput
-          label="Email"
-          type="email"
-          name="email"
-          placeholder="abc@gmail.com"
-          register={register}
-        />
+        <div className="mb-10 text-center">
+          <h1 className="text-5xl font-bold text-gray-900">
+            Welcome Back
+          </h1>
 
-        <AuthInput
-          label="Password"
-          type="password"
-          name="password"
-          placeholder="********"
-          register={register}
-        />
+          <p className="mt-3 text-lg text-gray-500">
+            Sign in to continue to your workspace.
+          </p>
+        </div>
 
-        <button
-          type="submit"
-          className="w-full mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800"
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-7"
         >
-          Login
-        </button>
+          <AuthInput
+            label="Email"
+            type="email"
+            name="email"
+            placeholder="name@example.com"
+            register={register}
+          />
 
-        <p className="text-center mt-5">
-          Don't have an account?{" "}
+          <AuthInput
+            label="Password"
+            type="password"
+            name="password"
+            placeholder="********"
+            register={register}
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="mt-2 w-full rounded-2xl bg-black py-4 text-xl font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {loading ? "Signing In..." : "Sign In"}
+          </button>
+        </form>
+
+        <p className="mt-8 text-center text-base text-gray-500">
+          Don't have a workspace?{" "}
           <Link
             to="/signup"
-            className="text-blue-600"
+            className="font-semibold text-black hover:underline"
           >
-            Sign Up
+            Create Workspace
           </Link>
         </p>
-      </form>
+
+      </div>
     </div>
   );
 }

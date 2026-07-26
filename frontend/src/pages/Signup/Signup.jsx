@@ -1,14 +1,15 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { saveToken } from "../../utils/token";
-
 
 import AuthInput from "../../components/auth/AuthInput";
 import { signup } from "../../services/auth";
+import { saveToken } from "../../utils/token";
 
 function Signup() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -18,6 +19,8 @@ function Signup() {
 
   const onSubmit = async (data) => {
     try {
+      setLoading(true);
+
       const res = await signup(data);
 
       saveToken(res.data.access_token);
@@ -26,69 +29,91 @@ function Signup() {
 
       reset();
 
-      navigate("/dashboard");
-
+      navigate("/");
     } catch (err) {
       toast.error(
         err.response?.data?.detail || "Signup failed."
       );
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="bg-white p-8 rounded-xl shadow-md w-full max-w-md"
-      >
-        <h1 className="text-3xl font-bold text-center mb-6">
-          Create Workspace
-        </h1>
+    <div className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
+     <div className="w-full max-w-xl rounded-2xl bg-white p-11 shadow-xl">
 
-        <AuthInput
-          label="Organization Name"
-          name="organization_name"
-          register={register}
-          placeholder="OpenAI"
-        />
+        <div className="mb-8 text-center">
+          <h1 className="text-3xl font-bold text-gray-900">
+            Create Workspace
+          </h1>
 
-        <AuthInput
-          label="Organization Slug"
-          name="organization_slug"
-          register={register}
-          placeholder="openai"
-        />
+          <p className="mt-2 text-sm text-gray-500">
+            Create your organization and admin account.
+          </p>
+        </div>
 
-        <AuthInput
-          label="Name"
-          name="name"
-          register={register}
-          placeholder="Imteyaz Alam"
-        />
-
-        <AuthInput
-          label="Email"
-          type="email"
-          name="email"
-          register={register}
-          placeholder="imteyaz@gmail.com"
-        />
-
-        <AuthInput
-          label="Password"
-          type="password"
-          name="password"
-          register={register}
-          placeholder="********"
-        />
-
-        <button
-          type="submit"
-          className="w-full mt-4 bg-black text-white py-3 rounded-lg hover:bg-gray-800"
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="space-y-4"
         >
-          Create Workspace
-        </button>
-      </form>
+          <AuthInput
+            label="Organization Name"
+            name="organization_name"
+            register={register}
+            placeholder="OpenAI"
+          />
+
+          <AuthInput
+            label="Organization Slug"
+            name="organization_slug"
+            register={register}
+            placeholder="openai"
+          />
+
+          <AuthInput
+            label="Full Name"
+            name="name"
+            register={register}
+            placeholder="Imteyaz Alam"
+          />
+
+          <AuthInput
+            label="Email"
+            type="email"
+            name="email"
+            register={register}
+            placeholder="name@example.com"
+          />
+
+          <AuthInput
+            label="Password"
+            type="password"
+            name="password"
+            register={register}
+            placeholder="********"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="w-full rounded-xl bg-black py-3 font-medium text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-70"
+          >
+            {loading ? "Creating..." : "Create Workspace"}
+          </button>
+        </form>
+
+        <p className="mt-6 text-center text-sm text-gray-500">
+          Already have a workspace?{" "}
+          <Link
+            to="/login"
+            className="font-medium text-black hover:underline"
+          >
+            Sign in
+          </Link>
+        </p>
+
+      </div>
     </div>
   );
 }
