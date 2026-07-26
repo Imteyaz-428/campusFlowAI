@@ -26,9 +26,9 @@ class ChatSessionListResponse(BaseModel):
         from_attributes = True
         
 class ChatMessageResponse(BaseModel):
-
     role: str
     content: str
+    citations: list | None = None   # <-- new
     class Config:
         from_attributes = True
 

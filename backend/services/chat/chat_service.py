@@ -73,14 +73,13 @@ class ChatService:
         )
 
         if cached:
-
             save_message(
                 db=db,
                 session_id=session.id,
                 role="assistant",
                 content=cached["answer"],
+                citations=cached["citations"],   # <-- add
             )
-
             return {
                 "session_id": session.id,
                 "answer": cached["answer"],
@@ -98,6 +97,7 @@ class ChatService:
             session_id=session.id,
             role="assistant",
             content=answer,
+            citations=citations,
         )
 
         response = {
@@ -334,6 +334,7 @@ class ChatService:
                 session_id=session.id,
                 role="assistant",
                 content=cached["answer"],
+                citations=cached["citations"],
             )
 
             yield (
@@ -387,6 +388,7 @@ class ChatService:
                     session_id=session.id,
                     role="assistant",
                     content=answer,
+                    citations=citations, 
                 )
                 self.redis.set(
                     cache_key,

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Text, DateTime, ForeignKey, String
+from sqlalchemy import Column, Integer, Text, DateTime, ForeignKey, String, JSON
 from sqlalchemy.orm import relationship
 from sqlalchemy.sql import func
 
@@ -19,6 +19,8 @@ class ChatMessage(Base):
     role = Column(String, nullable=False)
 
     content = Column(Text, nullable=False)
+
+    citations = Column(JSON, nullable=True)   # <-- new
 
     created_at = Column(
         DateTime(timezone=True),
