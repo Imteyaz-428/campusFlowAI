@@ -12,7 +12,7 @@
 
 **🔗 Live Demo:** [enterprise-rag-platform-three.vercel.app](https://enterprise-rag-platform-three.vercel.app)
 
-📸 Screenshots are in the [`/screenshot`](./screenshots) folder.
+📸 Screenshots are in the [`/screenshot`](./screenshot) folder.
 
 ---
 
