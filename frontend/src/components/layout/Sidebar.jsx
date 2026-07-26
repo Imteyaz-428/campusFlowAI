@@ -15,7 +15,7 @@ import { removeToken } from "../../utils/token";
 function Sidebar({ currentUser }) {
   const logout = () => {
     removeToken();
-    window.location.href = "/login";
+    window.location.href = "/";
   };
 
   const menu = [
