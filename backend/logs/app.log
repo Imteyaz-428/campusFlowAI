@@ -136,3 +136,7 @@
 2026-07-26 11:31:30,061 | INFO | Redis Cache Miss
 2026-07-26 11:31:30,062 | INFO | Using AI Provider: gemini
 2026-07-26 11:31:30,062 | INFO | gemini generated response successfully.
+2026-07-26 14:40:24,118 | INFO | Document 1 processed successfully.
+2026-07-26 14:40:38,170 | INFO | Redis Cache Miss
+2026-07-26 14:40:38,205 | INFO | Using AI Provider: gemini
+2026-07-26 14:40:38,206 | INFO | gemini generated response successfully.
