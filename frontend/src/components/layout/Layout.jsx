@@ -7,8 +7,6 @@ import { me } from "../../services/auth";
 
 function Layout({ children }) {
   const [currentUser, setCurrentUser] = useState(null);
-
-  // Mobile sidebar state
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
@@ -25,16 +23,17 @@ function Layout({ children }) {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gray-100">
+    <div className="h-screen bg-gray-100">
 
-      {/* Top Navbar */}
+      {/* Sticky Navbar */}
       <Navbar
         currentUser={currentUser}
         sidebarOpen={sidebarOpen}
         setSidebarOpen={setSidebarOpen}
       />
 
-      <div className="flex">
+      {/* Body */}
+      <div className="flex h-[calc(100vh-64px)]">
 
         {/* Sidebar */}
         <Sidebar
@@ -44,10 +43,12 @@ function Layout({ children }) {
         />
 
         {/* Main Content */}
-        <main className="flex-1 overflow-x-hidden p-4 md:p-6 lg:p-8">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden">
 
-          <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
+
             {children}
+
           </div>
 
         </main>

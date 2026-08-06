@@ -76,10 +76,9 @@ function Sidebar({
       <aside
         className={`
           fixed
-          top-0
+          inset-y-0
           left-0
           z-50
-          h-screen
           w-64
           bg-white
           border-r
@@ -88,6 +87,7 @@ function Sidebar({
           transform
           transition-transform
           duration-300
+          ease-in-out
 
           ${
             sidebarOpen
@@ -95,15 +95,15 @@ function Sidebar({
               : "-translate-x-full"
           }
 
-          md:static
+          md:relative
           md:translate-x-0
           md:flex
-          md:h-auto
+          md:h-full
+          md:shrink-0
         `}
       >
-        {/* Header */}
-        <div className="flex items-center justify-between px-6 py-6 border-b">
-
+        {/* Mobile Header Only */}
+        <div className="flex items-center justify-between px-6 py-5 border-b md:hidden">
           <div>
             <h1 className="text-xl font-bold text-gray-900">
               Enterprise RAG
@@ -114,18 +114,13 @@ function Sidebar({
             </p>
           </div>
 
-          {/* Mobile Close Button */}
-          <button
-            onClick={closeSidebar}
-            className="md:hidden"
-          >
+          <button onClick={closeSidebar}>
             <X size={22} />
           </button>
-
         </div>
 
-        {/* Menu */}
-        <nav className="flex-1 px-4 py-6">
+        {/* Navigation */}
+        <nav className="flex-1 overflow-y-auto px-4 py-4">
 
           <div className="space-y-2">
 
@@ -138,7 +133,7 @@ function Sidebar({
                   to={item.path}
                   onClick={closeSidebar}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 rounded-lg px-4 py-3 transition ${
+                    `flex items-center gap-3 rounded-lg px-4 py-3 transition-all ${
                       isActive
                         ? "bg-blue-50 text-blue-700 font-semibold"
                         : "text-gray-700 hover:bg-gray-100"
@@ -157,9 +152,9 @@ function Sidebar({
         </nav>
 
         {/* User Section */}
-        <div className="border-t p-5">
+        <div className="border-t p-4 shrink-0">
 
-          <div className="flex items-center gap-3 mb-5">
+          <div className="flex items-center gap-3 mb-4">
 
             <div className="h-11 w-11 rounded-full bg-blue-100 flex items-center justify-center">
 

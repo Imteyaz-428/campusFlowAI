@@ -2,21 +2,20 @@ import { User, Menu } from "lucide-react";
 
 function Navbar({
   currentUser,
-  sidebarOpen,
   setSidebarOpen,
 }) {
   return (
-    <header className="sticky top-0 z-30 bg-white border-b">
+    <header className="sticky top-0 z-50 h-16 bg-white border-b shadow-sm">
 
-      <div className="flex h-16 items-center justify-between px-4 md:px-6 lg:px-8">
+      <div className="flex h-full items-center justify-between px-4 md:px-6 lg:px-8">
 
         {/* Left */}
         <div className="flex items-center gap-4">
 
-          {/* Mobile Hamburger */}
+          {/* Mobile Menu */}
           <button
             onClick={() => setSidebarOpen(true)}
-            className="rounded-lg p-2 hover:bg-gray-100 md:hidden"
+            className="rounded-lg p-2 transition hover:bg-gray-100 md:hidden"
           >
             <Menu size={22} />
           </button>
@@ -27,7 +26,7 @@ function Navbar({
               Enterprise RAG Platform
             </h1>
 
-            <p className="hidden sm:block text-sm text-gray-500">
+            <p className="hidden md:block text-sm text-gray-500">
               AI Knowledge Management System
             </p>
 
@@ -38,11 +37,11 @@ function Navbar({
         {/* Right */}
         <div className="flex items-center gap-3">
 
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
+          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
 
             <User
               size={18}
-              className="text-gray-600"
+              className="text-blue-700"
             />
 
           </div>
