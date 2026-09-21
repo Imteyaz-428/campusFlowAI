@@ -402,3 +402,228 @@ class ChatService:
             "event: done\n"
             "data: {}\n\n"
         )
+        
+        
+    def applicant_chat_stream(
+        self,
+        db: Session,
+        question: str,
+        organization_id: int,
+    ):
+        """
+        Applicant-only streaming chat.
+
+        Applicant identity is already resolved by the router
+        using get_current_applicant().
+
+        Applicant chat is intentionally stateless on the backend.
+        The frontend maintains the conversation for the current
+        browser session.
+
+        Applicant has access only to institutional RAG knowledge.
+        No registered-user/session data is exposed.
+        """
+
+        results = self.retrieval_service.retrieve(
+            db=db,
+            question=question,
+            organization_id=organization_id,
+        )
+
+        citations = []
+
+        seen = set()
+
+        for result in results:
+
+            key = (
+                result.document.id,
+                result.chunk.chunk_index,
+            )
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+
+            citations.append(
+                {
+                    "document": result.document.original_filename,
+                    "chunk_index": result.chunk.chunk_index,
+                }
+            )
+
+        # --------------------------------------------------------
+        # Applicant prompt
+        # --------------------------------------------------------
+
+        prompt = self.prompt_service.build_prompt(
+            history=[],
+            chunks=results,
+            question=question,
+        )
+
+        # --------------------------------------------------------
+        # Metadata
+        # --------------------------------------------------------
+
+        yield (
+            "event: metadata\n"
+            f"data: {json.dumps({'citations': citations})}\n\n"
+        )
+
+        tokens = []
+
+        try:
+
+            for token in self.ai_service.stream_answer(
+                prompt=prompt,
+            ):
+
+                tokens.append(token)
+
+                yield (
+                    "event: token\n"
+                    f"data: {token}\n\n"
+                )
+
+        except Exception as exc:
+
+            logger.exception(
+                "Applicant chat streaming failed."
+            )
+
+            yield (
+                "event: error\n"
+                f"data: {json.dumps({'message': 'AI service temporarily unavailable.'})}\n\n"
+            )
+
+            return
+
+        finally:
+
+            # No applicant chat messages are persisted here.
+            # Applicant conversation is intentionally isolated
+            # from registered-user chat sessions.
+
+            pass
+
+        yield (
+            "event: done\n"
+            "data: {}\n\n"
+        )
+        
+
+    # ============================================================
+    # APPLICANT CHAT STREAM
+    # ============================================================
+
+    def applicant_chat_stream(
+        self,
+        db: Session,
+        question: str,
+        organization_id: int,
+    ):
+        """
+        Applicant-only streaming chat.
+
+        Applicant identity is resolved by the router using
+        get_current_applicant().
+
+        This version intentionally does not create ChatSession
+        records because ChatSession is linked to users.id while
+        applicants authenticate directly through students.id.
+
+        Applicant chat currently has access only to institutional
+        RAG knowledge.
+        """
+
+        results = self.retrieval_service.retrieve(
+            db=db,
+            question=question,
+            organization_id=organization_id,
+        )
+
+        # --------------------------------------------------------
+        # BUILD CITATIONS
+        # --------------------------------------------------------
+
+        citations = []
+        seen = set()
+
+        for result in results:
+
+            key = (
+                result.document.id,
+                result.chunk.chunk_index,
+            )
+
+            if key in seen:
+                continue
+
+            seen.add(key)
+
+            citations.append(
+                {
+                    "document": result.document.original_filename,
+                    "chunk_index": result.chunk.chunk_index,
+                }
+            )
+
+        # --------------------------------------------------------
+        # BUILD PROMPT
+        # --------------------------------------------------------
+
+        prompt = self.prompt_service.build_prompt(
+            history=[],
+            chunks=results,
+            question=question,
+        )
+
+        # --------------------------------------------------------
+        # SEND METADATA
+        # --------------------------------------------------------
+
+        yield (
+            "event: metadata\n"
+            f"data: {json.dumps({'citations': citations})}\n\n"
+        )
+
+        tokens = []
+
+        try:
+
+            for token in self.ai_service.stream_answer(
+                prompt=prompt,
+            ):
+
+                tokens.append(token)
+
+                yield (
+                    "event: token\n"
+                    f"data: {token}\n\n"
+                )
+
+        except Exception:
+
+            logger.exception(
+                "Applicant chat streaming failed."
+            )
+
+            yield (
+                "event: error\n"
+                f"data: {json.dumps({'message': 'AI service temporarily unavailable.'})}\n\n"
+            )
+
+            return
+
+        finally:
+
+            # Applicant messages are intentionally not stored
+            # in the registered-user ChatSession system.
+            pass
+
+        yield (
+            "event: done\n"
+            "data: {}\n\n"
+        )

@@ -1,25 +1,6 @@
-import { getDocuments } from "./document";
-import { getUsers } from "./user";
-import { getSessions } from "./chat";
-import { me } from "./auth";
+import api from "./api";
 
-export const getDashboardData = async () => {
-  const currentUser = await me();
-
-  const documents = await getDocuments();
-
-  const sessions = await getSessions();
-
-  let users = [];
-
-  if (currentUser.role === "admin") {
-    users = await getUsers();
-  }
-
-  return {
-    documents,
-    users,
-    sessions,
-    currentUser,
-  };
+export const getDashboardOverview = async () => {
+  const response = await api.get("/campus/dashboard/overview");
+  return response.data;
 };

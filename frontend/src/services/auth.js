@@ -5,18 +5,22 @@ export const signup = (data) => {
 };
 
 export const login = (data) => {
-  const form = new URLSearchParams();
-
-  form.append("username", data.email);
-  form.append("password", data.password);
-
-  return api.post("/auth/login", form, {
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-    },
+  return api.post("/auth/login", {
+    organization_slug: data.organization_slug,
+    email: data.email,
+    password: data.password,
   });
 };
-export const me = async () => {
-    const res = await api.get("/users/me");
-    return res.data;
-  };
+
+export const applicantLogin = (data) => {
+  return api.post("/auth/applicant-login", {
+    organization_slug: data.organization_slug,
+    application_number: data.application_number,
+    password: data.password,
+  });
+};
+
+export const me = () => {
+  return api.get("/auth/me");
+};
+

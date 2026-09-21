@@ -1,26 +1,17 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 
-import { me } from "../../services/auth";
+import { useAuth } from "../../context/AuthContext";
 
 function Layout({ children }) {
-  const [currentUser, setCurrentUser] = useState(null);
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const user = await me();
-        setCurrentUser(user);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
-    loadUser();
-  }, []);
+  const {
+    user: currentUser,
+    loading,
+  } = useAuth();
 
   return (
     <div className="h-screen bg-gray-100">
@@ -47,7 +38,19 @@ function Layout({ children }) {
 
           <div className="mx-auto max-w-7xl p-4 md:p-6 lg:p-8">
 
-            {children}
+            {loading ? (
+              <div className="flex min-h-[60vh] items-center justify-center">
+                <div className="text-center">
+                  <div className="mx-auto mb-4 h-9 w-9 animate-spin rounded-full border-4 border-gray-200 border-t-gray-900" />
+
+                  <p className="text-sm text-gray-500">
+                    Loading CampusFlow...
+                  </p>
+                </div>
+              </div>
+            ) : (
+              children
+            )}
 
           </div>
 

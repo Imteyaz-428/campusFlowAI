@@ -1,59 +1,77 @@
-import { User, Menu } from "lucide-react";
+import { User, Menu, GraduationCap } from "lucide-react";
 
 function Navbar({
   currentUser,
   setSidebarOpen,
 }) {
   return (
-    <header className="sticky top-0 z-50 h-16 bg-white border-b shadow-sm">
+    <header className="sticky top-0 z-50 h-16 border-b bg-white shadow-sm">
 
       <div className="flex h-full items-center justify-between px-4 md:px-6 lg:px-8">
 
         {/* Left */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3">
 
           {/* Mobile Menu */}
           <button
             onClick={() => setSidebarOpen(true)}
             className="rounded-lg p-2 transition hover:bg-gray-100 md:hidden"
+            aria-label="Open menu"
           >
             <Menu size={22} />
           </button>
 
-          <div>
+          {/* Brand */}
+          <div className="flex items-center gap-3">
 
-            <h1 className="text-lg md:text-xl font-semibold text-gray-900">
-              Enterprise RAG Platform
-            </h1>
+            <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gray-900 md:hidden">
+              <GraduationCap
+                size={18}
+                className="text-white"
+              />
+            </div>
 
-            <p className="hidden md:block text-sm text-gray-500">
-              AI Knowledge Management System
-            </p>
+            <div>
+              <h1 className="text-lg font-bold text-gray-900 md:text-xl">
+                CampusFlow AI
+              </h1>
+
+              <p className="hidden text-sm text-gray-500 md:block">
+                Intelligent Campus Process Automation
+              </p>
+            </div>
 
           </div>
 
         </div>
 
+
         {/* Right */}
         <div className="flex items-center gap-3">
 
-          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
+          {/* User Avatar */}
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100">
 
             <User
-              size={18}
-              className="text-blue-700"
+              size={19}
+              className="text-gray-700"
             />
 
           </div>
 
-          <div className="hidden sm:block text-right">
 
-            <p className="font-medium text-gray-900">
-              {currentUser?.username || "User"}
+          {/* User Information */}
+          <div className="hidden text-right sm:block">
+
+            <p className="font-semibold text-gray-900">
+              {currentUser?.full_name ||
+                currentUser?.name ||
+                currentUser?.email ||
+                "User"}
             </p>
 
-            <p className="text-sm text-gray-500 capitalize">
-              {currentUser?.role || ""}
+            <p className="text-sm capitalize text-gray-500">
+              {currentUser?.role || "User"}
             </p>
 
           </div>

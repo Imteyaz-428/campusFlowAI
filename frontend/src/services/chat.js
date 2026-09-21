@@ -112,3 +112,22 @@ export const streamChat = async ({
     onError?.(err);
   }
 };
+
+/* =========================================================
+   CAMPUSFLOW AI AGENT
+========================================================= */
+
+export const sendAgentMessage = async ({
+  message,
+  sessionId,
+}) => {
+  const response = await api.post(
+    "/agent/chat",
+    {
+      message,
+      session_id: sessionId || null,
+    }
+  );
+
+  return response.data;
+};

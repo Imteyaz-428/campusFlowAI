@@ -140,3 +140,408 @@
 2026-07-26 14:40:38,170 | INFO | Redis Cache Miss
 2026-07-26 14:40:38,205 | INFO | Using AI Provider: gemini
 2026-07-26 14:40:38,206 | INFO | gemini generated response successfully.
+2026-09-13 03:41:05,076 | INFO | Using AI Provider: gemini
+2026-09-13 03:41:07,848 | INFO | gemini generated response successfully.
+2026-09-13 06:02:41,948 | INFO | Using AI Provider: gemini
+2026-09-13 06:02:47,270 | INFO | gemini generated response successfully.
+2026-09-13 06:02:47,287 | INFO | Using AI Provider: gemini
+2026-09-13 06:02:50,144 | INFO | gemini generated response successfully.
+2026-09-13 06:13:35,436 | INFO | Using AI Provider: gemini
+2026-09-13 06:13:39,675 | INFO | gemini generated response successfully.
+2026-09-13 06:13:39,692 | INFO | Using AI Provider: gemini
+2026-09-13 06:13:45,405 | INFO | gemini generated response successfully.
+2026-09-13 06:14:15,177 | INFO | Using AI Provider: gemini
+2026-09-13 06:14:17,058 | INFO | gemini generated response successfully.
+2026-09-13 06:14:17,078 | INFO | Using AI Provider: gemini
+2026-09-13 06:14:19,634 | INFO | gemini generated response successfully.
+2026-09-13 06:14:36,521 | INFO | Using AI Provider: gemini
+2026-09-13 06:14:47,902 | INFO | gemini generated response successfully.
+2026-09-13 08:29:56,514 | INFO | Using AI Provider: gemini
+2026-09-13 08:29:58,842 | INFO | gemini generated response successfully.
+2026-09-13 08:29:58,862 | INFO | Using AI Provider: gemini
+2026-09-13 08:30:01,603 | INFO | gemini generated response successfully.
+2026-09-13 08:30:01,627 | INFO | Using AI Provider: gemini
+2026-09-13 08:30:05,214 | INFO | gemini generated response successfully.
+2026-09-13 08:30:05,222 | INFO | Using AI Provider: gemini
+2026-09-13 08:30:07,853 | INFO | gemini generated response successfully.
+2026-09-13 08:30:07,860 | INFO | Using AI Provider: gemini
+2026-09-13 08:30:10,335 | INFO | gemini generated response successfully.
+2026-09-13 08:30:10,336 | INFO | Using AI Provider: gemini
+2026-09-13 08:30:17,579 | INFO | gemini generated response successfully.
+2026-09-13 10:38:03,850 | INFO | Using AI Provider: gemini
+2026-09-13 10:38:06,160 | INFO | gemini generated response successfully.
+2026-09-13 10:38:06,189 | INFO | Using AI Provider: gemini
+2026-09-13 10:38:09,721 | INFO | gemini generated response successfully.
+2026-09-13 10:38:09,726 | INFO | Using AI Provider: gemini
+2026-09-13 10:38:11,726 | INFO | gemini generated response successfully.
+2026-09-13 10:38:11,726 | INFO | Using AI Provider: gemini
+2026-09-13 10:38:13,938 | INFO | gemini generated response successfully.
+2026-09-15 05:04:37,702 | INFO | Using AI Provider: gemini
+2026-09-15 05:04:40,518 | INFO | gemini generated response successfully.
+2026-09-15 05:04:40,532 | INFO | Using AI Provider: gemini
+2026-09-15 05:04:42,890 | INFO | gemini generated response successfully.
+2026-09-15 05:04:42,891 | INFO | Using AI Provider: gemini
+2026-09-15 05:04:46,143 | INFO | gemini generated response successfully.
+2026-09-15 05:06:18,043 | INFO | Using AI Provider: gemini
+2026-09-15 05:06:22,094 | INFO | gemini generated response successfully.
+2026-09-15 05:30:09,543 | INFO | Using AI Provider: gemini
+2026-09-15 05:30:12,542 | INFO | gemini generated response successfully.
+2026-09-15 05:30:12,551 | INFO | Using AI Provider: gemini
+2026-09-15 05:30:15,606 | INFO | gemini generated response successfully.
+2026-09-15 05:30:15,607 | INFO | Using AI Provider: gemini
+2026-09-15 05:30:20,900 | INFO | gemini generated response successfully.
+2026-09-15 12:30:09,414 | INFO | Using AI Provider: gemini
+2026-09-15 12:30:11,798 | INFO | gemini generated response successfully.
+2026-09-15 12:30:11,805 | INFO | Using AI Provider: gemini
+2026-09-15 12:30:13,835 | INFO | gemini generated response successfully.
+2026-09-15 12:30:13,835 | INFO | Using AI Provider: gemini
+2026-09-15 12:30:15,881 | INFO | gemini generated response successfully.
+2026-09-15 12:30:39,754 | INFO | Using AI Provider: gemini
+2026-09-15 12:30:42,020 | INFO | gemini generated response successfully.
+2026-09-15 12:32:35,691 | INFO | Using AI Provider: gemini
+2026-09-15 12:32:38,431 | INFO | gemini generated response successfully.
+2026-09-15 12:33:17,358 | INFO | Using AI Provider: gemini
+2026-09-15 12:33:20,208 | INFO | gemini generated response successfully.
+2026-09-15 12:33:20,214 | INFO | Using AI Provider: gemini
+2026-09-15 12:33:22,485 | INFO | gemini generated response successfully.
+2026-09-15 12:33:22,486 | INFO | Using AI Provider: gemini
+2026-09-15 12:33:26,168 | INFO | gemini generated response successfully.
+2026-09-15 12:38:04,460 | INFO | Using AI Provider: gemini
+2026-09-15 12:38:07,545 | INFO | gemini generated response successfully.
+2026-09-15 12:38:08,101 | INFO | Using AI Provider: gemini
+2026-09-15 12:38:09,697 | INFO | gemini generated response successfully.
+2026-09-15 12:38:09,698 | INFO | Using AI Provider: gemini
+2026-09-15 12:38:12,429 | INFO | gemini generated response successfully.
+2026-09-15 12:38:12,429 | INFO | Using AI Provider: gemini
+2026-09-15 12:38:14,818 | INFO | gemini generated response successfully.
+2026-09-15 13:06:57,101 | INFO | Document 1 processed successfully.
+2026-09-15 13:08:15,706 | INFO | Document 2 processed successfully.
+2026-09-15 13:09:02,286 | INFO | Document 3 processed successfully.
+2026-09-15 13:10:36,259 | INFO | Using AI Provider: gemini
+2026-09-15 13:10:41,980 | INFO | gemini generated response successfully.
+2026-09-15 13:10:42,340 | INFO | Using AI Provider: gemini
+2026-09-15 13:10:46,909 | INFO | gemini generated response successfully.
+2026-09-15 13:10:46,910 | INFO | Using AI Provider: gemini
+2026-09-15 13:10:51,297 | INFO | gemini generated response successfully.
+2026-09-15 13:10:51,298 | INFO | Using AI Provider: gemini
+2026-09-15 13:10:55,085 | INFO | gemini generated response successfully.
+2026-09-15 13:30:12,104 | INFO | Using AI Provider: gemini
+2026-09-15 13:30:15,342 | INFO | gemini generated response successfully.
+2026-09-15 13:34:58,112 | INFO | Using AI Provider: gemini
+2026-09-15 13:35:00,935 | INFO | gemini generated response successfully.
+2026-09-15 13:35:00,940 | INFO | Using AI Provider: gemini
+2026-09-15 13:35:03,078 | INFO | gemini generated response successfully.
+2026-09-15 13:35:03,078 | INFO | Using AI Provider: gemini
+2026-09-15 13:35:04,741 | INFO | gemini generated response successfully.
+2026-09-15 13:44:50,615 | INFO | Using AI Provider: gemini
+2026-09-15 13:44:53,956 | INFO | gemini generated response successfully.
+2026-09-15 13:44:53,963 | INFO | Using AI Provider: gemini
+2026-09-15 13:44:59,559 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 411.726738ms.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '0s'}]}}
+2026-09-15 13:44:59,570 | INFO | Using AI Provider: groq
+2026-09-15 13:45:04,046 | WARNING | groq failed: Error code: 404 - {'error': {'message': 'The model `llama-3.3-70b-versatile` does not exist or you do not have access to it.', 'type': 'invalid_request_error', 'code': 'model_not_found'}}
+2026-09-15 13:45:04,056 | INFO | Using AI Provider: deepseek
+2026-09-15 13:45:10,636 | WARNING | deepseek failed: Error code: 402 - {'error': {'message': 'Insufficient Balance', 'type': 'unknown_error', 'param': None, 'code': 'invalid_request_error'}}
+2026-09-15 13:45:10,638 | ERROR | All AI providers failed.
+2026-09-15 13:55:28,600 | INFO | Using AI Provider: gemini
+2026-09-15 13:55:35,103 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 24.844912876s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '24s'}]}}
+2026-09-15 13:55:35,116 | INFO | Using AI Provider: groq
+2026-09-15 13:55:36,451 | INFO | groq generated response successfully.
+2026-09-15 13:55:36,459 | INFO | Using AI Provider: gemini
+2026-09-15 13:55:42,061 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 17.941016408s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '17s'}]}}
+2026-09-15 13:55:42,062 | INFO | Using AI Provider: groq
+2026-09-15 13:55:43,393 | INFO | groq generated response successfully.
+2026-09-15 13:55:43,394 | INFO | Using AI Provider: gemini
+2026-09-15 13:55:49,221 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 10.933079757s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '10s'}]}}
+2026-09-15 13:55:49,222 | INFO | Using AI Provider: groq
+2026-09-15 13:55:49,793 | INFO | groq generated response successfully.
+2026-09-15 16:48:55,810 | INFO | Using AI Provider: gemini
+2026-09-15 16:48:59,338 | INFO | gemini generated response successfully.
+2026-09-15 16:48:59,349 | INFO | Using AI Provider: gemini
+2026-09-15 16:49:04,860 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 55.193113921s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '55s'}]}}
+2026-09-15 16:49:04,872 | INFO | Using AI Provider: groq
+2026-09-15 16:49:05,894 | INFO | groq generated response successfully.
+2026-09-15 16:49:05,896 | INFO | Using AI Provider: gemini
+2026-09-15 16:49:11,313 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 48.852078388s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '48s'}]}}
+2026-09-15 16:49:11,314 | INFO | Using AI Provider: groq
+2026-09-15 16:49:12,530 | INFO | groq generated response successfully.
+2026-09-15 16:49:12,918 | INFO | Using AI Provider: gemini
+2026-09-15 16:49:18,589 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 41.47921015s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '41s'}]}}
+2026-09-15 16:49:18,593 | INFO | Using AI Provider: groq
+2026-09-15 16:49:20,737 | INFO | groq generated response successfully.
+2026-09-15 16:49:20,738 | INFO | Using AI Provider: gemini
+2026-09-15 16:49:26,158 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 33.845991801s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}
+2026-09-15 16:49:26,165 | INFO | Using AI Provider: groq
+2026-09-15 16:49:28,216 | INFO | groq generated response successfully.
+2026-09-15 16:49:28,217 | INFO | Using AI Provider: gemini
+2026-09-15 16:49:33,535 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 26.538948509s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}
+2026-09-15 16:49:33,535 | INFO | Using AI Provider: groq
+2026-09-15 16:49:35,282 | INFO | groq generated response successfully.
+2026-09-15 17:14:23,477 | INFO | Using AI Provider: gemini
+2026-09-15 17:14:29,476 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 30.598394214s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '30s'}]}}
+2026-09-15 17:14:29,486 | INFO | Using AI Provider: groq
+2026-09-15 17:14:30,764 | INFO | groq generated response successfully.
+2026-09-15 17:14:31,161 | INFO | Using AI Provider: gemini
+2026-09-15 17:14:36,870 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 23.215619263s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}
+2026-09-15 17:14:36,882 | INFO | Using AI Provider: groq
+2026-09-15 17:14:38,999 | INFO | groq generated response successfully.
+2026-09-15 17:14:39,000 | INFO | Using AI Provider: gemini
+2026-09-15 17:14:44,350 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 15.676371333s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}
+2026-09-15 17:14:44,351 | INFO | Using AI Provider: groq
+2026-09-15 17:14:47,528 | INFO | groq generated response successfully.
+2026-09-15 17:14:47,528 | INFO | Using AI Provider: gemini
+2026-09-15 17:14:52,955 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 7.06814415s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '7s'}]}}
+2026-09-15 17:14:52,956 | INFO | Using AI Provider: groq
+2026-09-15 17:15:00,835 | INFO | groq generated response successfully.
+2026-09-15 17:23:20,435 | INFO | Using AI Provider: gemini
+2026-09-15 17:23:26,671 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 33.553793862s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}
+2026-09-15 17:23:26,684 | INFO | Using AI Provider: groq
+2026-09-15 17:23:27,903 | INFO | groq generated response successfully.
+2026-09-15 17:23:27,915 | INFO | Using AI Provider: gemini
+2026-09-15 17:23:33,428 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 26.539471956s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '26s'}]}}
+2026-09-15 17:23:33,429 | INFO | Using AI Provider: groq
+2026-09-15 17:23:34,557 | INFO | groq generated response successfully.
+2026-09-15 17:23:34,558 | INFO | Using AI Provider: gemini
+2026-09-15 17:23:39,998 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 19.936933332s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '19s'}]}}
+2026-09-15 17:23:39,999 | INFO | Using AI Provider: groq
+2026-09-15 17:23:41,006 | INFO | groq generated response successfully.
+2026-09-16 02:55:11,240 | INFO | Using AI Provider: gemini
+2026-09-16 02:55:14,248 | INFO | gemini generated response successfully.
+2026-09-16 02:55:14,256 | INFO | Using AI Provider: gemini
+2026-09-16 02:55:19,979 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 40.123116205s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '40s'}]}}
+2026-09-16 02:55:19,992 | INFO | Using AI Provider: groq
+2026-09-16 02:55:21,283 | INFO | groq generated response successfully.
+2026-09-16 02:55:21,283 | INFO | Using AI Provider: gemini
+2026-09-16 02:55:26,837 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 33.355616105s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '33s'}]}}
+2026-09-16 02:55:26,837 | INFO | Using AI Provider: groq
+2026-09-16 02:55:27,556 | INFO | groq generated response successfully.
+2026-09-16 02:58:12,015 | INFO | Using AI Provider: gemini
+2026-09-16 02:58:18,221 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 41.85724985s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '41s'}]}}
+2026-09-16 02:58:18,239 | INFO | Using AI Provider: groq
+2026-09-16 02:58:19,595 | INFO | groq generated response successfully.
+2026-09-16 02:58:19,619 | INFO | Using AI Provider: gemini
+2026-09-16 02:58:25,099 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 34.913987128s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '34s'}]}}
+2026-09-16 02:58:25,100 | INFO | Using AI Provider: groq
+2026-09-16 02:58:31,368 | INFO | groq generated response successfully.
+2026-09-16 02:58:31,369 | INFO | Using AI Provider: gemini
+2026-09-16 02:58:36,792 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 23.242209206s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}
+2026-09-16 02:58:36,793 | INFO | Using AI Provider: groq
+2026-09-16 02:58:37,714 | INFO | groq generated response successfully.
+2026-09-16 02:59:02,889 | INFO | Using AI Provider: gemini
+2026-09-16 02:59:08,559 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 51.512559904s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '51s'}]}}
+2026-09-16 02:59:08,574 | INFO | Using AI Provider: groq
+2026-09-16 02:59:09,666 | INFO | groq generated response successfully.
+2026-09-16 02:59:09,677 | INFO | Using AI Provider: gemini
+2026-09-16 02:59:15,002 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 45.035283845s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '45s'}]}}
+2026-09-16 02:59:15,002 | INFO | Using AI Provider: groq
+2026-09-16 02:59:44,585 | INFO | groq generated response successfully.
+2026-09-16 02:59:44,586 | INFO | Using AI Provider: gemini
+2026-09-16 02:59:50,087 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 9.908953089s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '9s'}]}}
+2026-09-16 02:59:50,088 | INFO | Using AI Provider: groq
+2026-09-16 02:59:53,144 | INFO | groq generated response successfully.
+2026-09-16 05:57:23,867 | INFO | Using AI Provider: gemini
+2026-09-16 05:57:27,190 | INFO | gemini generated response successfully.
+2026-09-16 05:57:27,210 | INFO | Using AI Provider: gemini
+2026-09-16 05:57:32,817 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 27.218350274s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '27s'}]}}
+2026-09-16 05:57:32,829 | INFO | Using AI Provider: groq
+2026-09-16 05:57:34,472 | INFO | groq generated response successfully.
+2026-09-16 05:57:34,473 | INFO | Using AI Provider: gemini
+2026-09-16 05:57:39,880 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 20.120344513s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '20s'}]}}
+2026-09-16 05:57:39,881 | INFO | Using AI Provider: groq
+2026-09-16 05:57:40,905 | INFO | groq generated response successfully.
+2026-09-16 05:59:46,012 | INFO | Using AI Provider: gemini
+2026-09-16 05:59:51,466 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 8.555513985s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '8s'}]}}
+2026-09-16 05:59:51,475 | INFO | Using AI Provider: groq
+2026-09-16 05:59:53,009 | INFO | groq generated response successfully.
+2026-09-16 05:59:53,035 | INFO | Using AI Provider: gemini
+2026-09-16 05:59:58,430 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 1.549648927s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '1s'}]}}
+2026-09-16 05:59:58,431 | INFO | Using AI Provider: groq
+2026-09-16 06:00:05,907 | INFO | groq generated response successfully.
+2026-09-16 06:00:05,908 | INFO | Using AI Provider: gemini
+2026-09-16 06:00:11,131 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 48.936245603s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '48s'}]}}
+2026-09-16 06:00:11,132 | INFO | Using AI Provider: groq
+2026-09-16 06:00:12,462 | INFO | groq generated response successfully.
+2026-09-17 01:28:10,277 | INFO | Redis Cache Miss
+2026-09-17 01:28:10,357 | INFO | Using AI Provider: gemini
+2026-09-17 01:28:10,357 | INFO | gemini generated response successfully.
+2026-09-17 01:28:23,142 | INFO | Redis Cache Miss
+2026-09-17 01:28:23,145 | INFO | Using AI Provider: gemini
+2026-09-17 01:28:23,145 | INFO | gemini generated response successfully.
+2026-09-17 01:28:41,265 | INFO | Redis Cache Miss
+2026-09-17 01:28:41,266 | INFO | Using AI Provider: gemini
+2026-09-17 01:28:41,266 | INFO | gemini generated response successfully.
+2026-09-17 15:02:27,138 | INFO | Using AI Provider: gemini
+2026-09-17 15:02:37,597 | INFO | gemini generated response successfully.
+2026-09-17 15:02:37,621 | INFO | Using AI Provider: gemini
+2026-09-17 15:02:57,708 | INFO | gemini generated response successfully.
+2026-09-17 15:20:25,270 | INFO | Using AI Provider: gemini
+2026-09-17 15:20:32,128 | INFO | gemini generated response successfully.
+2026-09-17 15:20:32,129 | INFO | Using AI Provider: gemini
+2026-09-17 15:21:00,859 | INFO | gemini generated response successfully.
+2026-09-18 09:34:04,528 | INFO | Redis Cache Miss
+2026-09-18 09:34:04,587 | INFO | Using AI Provider: gemini
+2026-09-18 09:34:04,587 | INFO | gemini generated response successfully.
+2026-09-18 12:06:24,955 | INFO | Using AI Provider: gemini
+2026-09-18 12:06:27,821 | INFO | gemini generated response successfully.
+2026-09-18 12:06:27,863 | INFO | Using AI Provider: gemini
+2026-09-18 12:06:33,098 | INFO | gemini generated response successfully.
+2026-09-18 12:06:33,101 | INFO | Using AI Provider: gemini
+2026-09-18 12:06:38,359 | INFO | gemini generated response successfully.
+2026-09-18 12:09:52,217 | INFO | Using AI Provider: gemini
+2026-09-18 12:09:55,624 | INFO | gemini generated response successfully.
+2026-09-18 12:09:55,634 | INFO | Using AI Provider: gemini
+2026-09-18 12:09:57,674 | INFO | gemini generated response successfully.
+2026-09-18 12:09:57,674 | INFO | Using AI Provider: gemini
+2026-09-18 12:09:59,297 | INFO | gemini generated response successfully.
+2026-09-18 13:05:04,926 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:07,800 | INFO | gemini generated response successfully.
+2026-09-18 13:05:07,813 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:10,111 | INFO | gemini generated response successfully.
+2026-09-18 13:05:10,112 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:12,158 | INFO | gemini generated response successfully.
+2026-09-18 13:05:39,392 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:41,891 | INFO | gemini generated response successfully.
+2026-09-18 13:05:41,898 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:44,512 | INFO | gemini generated response successfully.
+2026-09-18 13:05:44,513 | INFO | Using AI Provider: gemini
+2026-09-18 13:05:45,905 | INFO | gemini generated response successfully.
+2026-09-18 18:19:11,609 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:14,514 | INFO | gemini generated response successfully.
+2026-09-18 18:19:14,545 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:17,950 | INFO | gemini generated response successfully.
+2026-09-18 18:19:17,951 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:19,819 | INFO | gemini generated response successfully.
+2026-09-18 18:19:36,206 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:38,800 | INFO | gemini generated response successfully.
+2026-09-18 18:19:38,812 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:41,928 | INFO | gemini generated response successfully.
+2026-09-18 18:19:41,930 | INFO | Using AI Provider: gemini
+2026-09-18 18:19:43,817 | INFO | gemini generated response successfully.
+2026-09-18 18:20:18,737 | INFO | Using AI Provider: gemini
+2026-09-18 18:20:23,246 | INFO | gemini generated response successfully.
+2026-09-18 18:20:23,934 | INFO | Using AI Provider: gemini
+2026-09-18 18:20:30,494 | INFO | gemini generated response successfully.
+2026-09-18 18:20:30,522 | INFO | Using AI Provider: gemini
+2026-09-18 18:20:36,524 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 23.380043083s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '23s'}]}}
+2026-09-18 18:20:36,542 | INFO | Using AI Provider: groq
+2026-09-18 18:20:38,475 | INFO | groq generated response successfully.
+2026-09-18 18:20:38,476 | INFO | Using AI Provider: gemini
+2026-09-18 18:20:43,955 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 15.947596787s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '15s'}]}}
+2026-09-18 18:20:43,956 | INFO | Using AI Provider: groq
+2026-09-18 18:20:45,551 | INFO | groq generated response successfully.
+2026-09-18 18:37:09,481 | INFO | Using AI Provider: gemini
+2026-09-18 18:37:15,385 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 44.53109557s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '44s'}]}}
+2026-09-18 18:37:15,399 | INFO | Using AI Provider: groq
+2026-09-18 18:37:17,397 | INFO | groq generated response successfully.
+2026-09-18 18:37:17,432 | INFO | Using AI Provider: gemini
+2026-09-18 18:37:22,929 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 36.994365335s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-2.5-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '36s'}]}}
+2026-09-18 18:37:22,945 | INFO | Using AI Provider: groq
+2026-09-18 18:37:26,364 | INFO | groq generated response successfully.
+2026-09-18 21:26:56,100 | INFO | Using AI Provider: gemini
+2026-09-18 21:27:03,410 | INFO | gemini generated response successfully.
+2026-09-18 21:27:03,436 | INFO | Using AI Provider: gemini
+2026-09-18 21:27:09,136 | WARNING | gemini failed: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-2.5-flash\nPlease retry in 51.026336629s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'location': 'global', 'model': 'gemini-2.5-flash'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '51s'}]}}
+2026-09-18 21:27:09,152 | INFO | Using AI Provider: groq
+2026-09-18 21:27:12,202 | INFO | groq generated response successfully.
+2026-09-19 06:02:57,304 | INFO | Redis Cache Miss
+2026-09-19 06:02:57,335 | INFO | Using AI Provider: gemini
+2026-09-19 06:02:57,336 | INFO | gemini generated response successfully.
+2026-09-19 08:56:50,514 | INFO | Using AI Provider: gemini
+2026-09-19 08:56:58,059 | INFO | gemini generated response successfully.
+2026-09-19 08:59:41,481 | INFO | Using AI Provider: gemini
+2026-09-19 09:00:01,569 | INFO | gemini generated response successfully.
+2026-09-19 10:23:56,526 | INFO | Redis Cache Miss
+2026-09-19 10:23:56,589 | INFO | Using AI Provider: gemini
+2026-09-19 10:23:56,589 | INFO | gemini generated response successfully.
+2026-09-19 10:52:22,580 | INFO | Using AI Provider: gemini
+2026-09-19 10:52:25,364 | INFO | gemini generated response successfully.
+2026-09-19 10:52:25,381 | INFO | Using AI Provider: gemini
+2026-09-19 10:52:34,666 | INFO | gemini generated response successfully.
+2026-09-19 10:52:34,685 | INFO | Using AI Provider: gemini
+2026-09-19 10:52:40,097 | INFO | gemini generated response successfully.
+2026-09-19 10:52:40,098 | INFO | Using AI Provider: gemini
+2026-09-19 10:52:45,751 | INFO | gemini generated response successfully.
+2026-09-19 10:55:00,887 | INFO | Using AI Provider: gemini
+2026-09-19 10:55:07,346 | INFO | gemini generated response successfully.
+2026-09-19 10:55:07,369 | INFO | Using AI Provider: gemini
+2026-09-19 10:55:23,328 | INFO | gemini generated response successfully.
+2026-09-19 10:58:47,235 | INFO | Redis Cache Miss
+2026-09-19 10:58:47,237 | INFO | Using AI Provider: gemini
+2026-09-19 10:58:47,237 | INFO | gemini generated response successfully.
+2026-09-19 11:00:56,366 | INFO | Using AI Provider: gemini
+2026-09-19 11:00:58,785 | INFO | gemini generated response successfully.
+2026-09-19 11:00:58,799 | INFO | Using AI Provider: gemini
+2026-09-19 11:01:02,273 | INFO | gemini generated response successfully.
+2026-09-19 11:01:02,273 | INFO | Using AI Provider: gemini
+2026-09-19 11:01:04,110 | INFO | gemini generated response successfully.
+2026-09-19 11:01:29,413 | INFO | Using AI Provider: gemini
+2026-09-19 11:01:31,862 | INFO | gemini generated response successfully.
+2026-09-19 11:01:31,878 | INFO | Using AI Provider: gemini
+2026-09-19 11:01:39,228 | INFO | gemini generated response successfully.
+2026-09-19 11:01:39,229 | INFO | Using AI Provider: gemini
+2026-09-19 11:01:41,583 | INFO | gemini generated response successfully.
+2026-09-19 11:03:20,584 | INFO | Using AI Provider: gemini
+2026-09-19 11:03:26,642 | INFO | gemini generated response successfully.
+2026-09-19 11:04:40,105 | INFO | Using AI Provider: gemini
+2026-09-19 11:04:44,468 | INFO | gemini generated response successfully.
+2026-09-19 11:04:44,488 | INFO | Using AI Provider: gemini
+2026-09-19 11:04:46,610 | INFO | gemini generated response successfully.
+2026-09-19 11:04:46,610 | INFO | Using AI Provider: gemini
+2026-09-19 11:04:48,559 | INFO | gemini generated response successfully.
+2026-09-21 05:48:38,348 | INFO | Using AI Provider: gemini
+2026-09-21 05:48:42,455 | INFO | gemini generated response successfully.
+2026-09-21 05:48:42,513 | INFO | Using AI Provider: gemini
+2026-09-21 05:48:53,129 | INFO | gemini generated response successfully.
+2026-09-21 05:49:38,177 | INFO | Using AI Provider: gemini
+2026-09-21 05:49:40,490 | INFO | gemini generated response successfully.
+2026-09-21 05:49:40,505 | INFO | Using AI Provider: gemini
+2026-09-21 05:49:43,452 | INFO | gemini generated response successfully.
+2026-09-21 05:49:43,452 | INFO | Using AI Provider: gemini
+2026-09-21 05:49:45,494 | INFO | gemini generated response successfully.
+2026-09-21 05:50:27,023 | INFO | Using AI Provider: gemini
+2026-09-21 05:50:29,526 | INFO | gemini generated response successfully.
+2026-09-21 05:50:29,537 | INFO | Using AI Provider: gemini
+2026-09-21 05:50:31,878 | INFO | gemini generated response successfully.
+2026-09-21 05:50:31,878 | INFO | Using AI Provider: gemini
+2026-09-21 05:50:34,099 | INFO | gemini generated response successfully.
+2026-09-21 06:27:40,464 | INFO | Using AI Provider: gemini
+2026-09-21 06:27:44,505 | WARNING | gemini failed: [Errno -2] Name or service not known
+2026-09-21 06:27:44,525 | INFO | Using AI Provider: groq
+2026-09-21 06:27:52,808 | WARNING | groq failed: Connection error.
+2026-09-21 06:27:52,819 | INFO | Using AI Provider: deepseek
+2026-09-21 06:28:01,520 | WARNING | deepseek failed: Connection error.
+2026-09-21 06:28:01,523 | ERROR | All AI providers failed.
+2026-09-21 06:31:12,857 | INFO | Using AI Provider: gemini
+2026-09-21 06:31:44,833 | INFO | gemini generated response successfully.
+2026-09-21 06:31:44,836 | INFO | Using AI Provider: gemini
+2026-09-21 06:33:42,282 | INFO | gemini generated response successfully.
+2026-09-21 06:42:14,580 | INFO | Using AI Provider: gemini
+2026-09-21 06:42:28,337 | INFO | gemini generated response successfully.
+2026-09-21 06:46:44,913 | INFO | Using AI Provider: gemini
+2026-09-21 06:46:52,102 | INFO | gemini generated response successfully.
+2026-09-21 06:46:52,133 | INFO | Using AI Provider: gemini
+2026-09-21 06:47:03,709 | INFO | gemini generated response successfully.
+2026-09-21 06:47:03,709 | INFO | Using AI Provider: gemini
+2026-09-21 06:47:06,259 | INFO | gemini generated response successfully.
+2026-09-21 06:47:52,965 | INFO | Using AI Provider: gemini
+2026-09-21 06:48:02,711 | INFO | gemini generated response successfully.
+2026-09-21 06:48:02,724 | INFO | Using AI Provider: gemini
+2026-09-21 06:48:22,132 | INFO | gemini generated response successfully.
+2026-09-21 06:48:22,134 | INFO | Using AI Provider: gemini
+2026-09-21 06:48:38,398 | INFO | gemini generated response successfully.
+2026-09-21 06:48:39,376 | INFO | Using AI Provider: gemini
+2026-09-21 06:48:43,142 | INFO | gemini generated response successfully.
+2026-09-21 06:48:43,155 | INFO | Using AI Provider: gemini
+2026-09-21 06:49:06,803 | INFO | gemini generated response successfully.
+2026-09-21 06:49:06,806 | INFO | Using AI Provider: gemini
+2026-09-21 06:49:19,751 | INFO | gemini generated response successfully.
+2026-09-21 06:56:57,514 | INFO | Using AI Provider: gemini
+2026-09-21 06:58:37,382 | WARNING | gemini failed: [SSL: UNEXPECTED_EOF_WHILE_READING] EOF occurred in violation of protocol (_ssl.c:1032)
+2026-09-21 06:58:37,408 | INFO | Using AI Provider: groq
+2026-09-21 06:59:57,421 | WARNING | groq failed: Connection error.
+2026-09-21 06:59:57,431 | INFO | Using AI Provider: deepseek
+2026-09-21 07:01:17,702 | WARNING | deepseek failed: Connection error.
+2026-09-21 07:01:17,707 | ERROR | All AI providers failed.
+2026-09-21 10:03:16,584 | INFO | Using AI Provider: gemini
+2026-09-21 10:03:25,676 | INFO | gemini generated response successfully.
+2026-09-21 10:03:25,678 | INFO | Using AI Provider: gemini
+2026-09-21 10:03:46,329 | INFO | gemini generated response successfully.

@@ -3,6 +3,10 @@ from sqlalchemy.orm import Session
 from models.chat_message import ChatMessage
 
 
+
+# SAVE MESSAGE
+
+
 def save_message(
     db: Session,
     session_id: int,
@@ -19,10 +23,16 @@ def save_message(
     )
 
     db.add(message)
+
     db.commit()
+
     db.refresh(message)
 
     return message
+
+
+
+# RECENT MESSAGES
 
 
 def get_recent_messages(
@@ -33,13 +43,23 @@ def get_recent_messages(
 
     messages = (
         db.query(ChatMessage)
-        .filter(ChatMessage.session_id == session_id)
-        .order_by(ChatMessage.created_at.desc())
+        .filter(
+            ChatMessage.session_id == session_id
+        )
+        .order_by(
+            ChatMessage.created_at.desc()
+        )
         .limit(limit)
         .all()
     )
 
-    return list(reversed(messages))
+    return list(
+        reversed(messages)
+    )
+
+
+
+# ALL SESSION MESSAGES
 
 
 def get_session_messages(
@@ -49,7 +69,11 @@ def get_session_messages(
 
     return (
         db.query(ChatMessage)
-        .filter(ChatMessage.session_id == session_id)
-        .order_by(ChatMessage.created_at)
+        .filter(
+            ChatMessage.session_id == session_id
+        )
+        .order_by(
+            ChatMessage.created_at
+        )
         .all()
     )
