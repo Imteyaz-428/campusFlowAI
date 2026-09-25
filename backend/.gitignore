@@ -5,3 +5,11 @@ backend/uploads/
 __pycache__/
 *.pyc
 .venv
+
+.env
+.venv/
+.campusflow-venv/
+__pycache__/
+*.pyc
+node_modules/
+dist/
