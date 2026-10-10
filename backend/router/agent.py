@@ -57,6 +57,11 @@ router = APIRouter(
 # AGENT CHAT
 
 
+import logging
+
+logger = logging.getLogger(__name__)
+
+
 @router.post(
     "/chat",
     response_model=AgentChatResponse,
@@ -71,16 +76,11 @@ def agent_chat(
     """
     CampusFlow AI Agent.
 
-    Supports:
-
-        Applicant
-        Registered Student
-
-    Identity is always resolved server-side.
+    Supports applicants and registered students.
+    Identity is resolved server-side.
     """
 
     try:
-
         return process_agent_message(
             db=db,
             request=request,
@@ -88,27 +88,38 @@ def agent_chat(
         )
 
     except PermissionError as exc:
-
         raise HTTPException(
             status_code=status.HTTP_403_FORBIDDEN,
             detail=str(exc),
-        )
+        ) from exc
 
     except ValueError as exc:
+        logger.warning(
+            "Agent request validation failed: %s",
+            exc,
+            exc_info=True,
+        )
 
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
             detail=str(exc),
-        )
+        ) from exc
 
     except RuntimeError as exc:
+        logger.exception(
+            "Agent runtime error",
+        )
 
         raise HTTPException(
             status_code=status.HTTP_502_BAD_GATEWAY,
             detail=str(exc),
+        ) from exc
+
+    except Exception:
+        logger.exception(
+            "Unexpected error in /agent/chat",
         )
-
-
+        raise
 
 # GET AGENT SESSIONS
 

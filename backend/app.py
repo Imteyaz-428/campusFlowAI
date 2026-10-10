@@ -23,6 +23,7 @@ from models.sequence_counter import SequenceCounter
 from models.fee import Fee
 from models.ticket import Ticket
 from models.agent_audit_log import AgentAuditLog
+from models.applicant_application import ApplicantApplication
 
 
 
@@ -46,7 +47,7 @@ from router.dashboard import router as dashboard_router
 from router.applicant_dashboard import router as applicant_dashboard_router
 from router.applicant_chat import router as applicant_chat_router
 from router.admin_knowledge import router as admin_knowledge_router
-
+from router.applicant_application import router as applicant_application_router
 
 # APPLICATION
 
@@ -109,7 +110,7 @@ app.include_router(
 app.include_router(
     chat_router
 )
-
+app.include_router(applicant_application_router)
 app.include_router(
     campus_students_router
 )

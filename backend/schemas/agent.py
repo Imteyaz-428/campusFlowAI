@@ -47,13 +47,14 @@ class AgentStep(BaseModel):
 
 
 class AgentChatResponse(BaseModel):
-
     type: str
 
     message: str
 
     session_id: int
 
-    citations: list[dict[str, Any]] = []
+    citations: list[dict[str, Any]] = Field(
+        default_factory=list
+    )
 
     steps: list[AgentStep] | None = None
