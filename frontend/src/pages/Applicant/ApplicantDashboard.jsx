@@ -14,14 +14,15 @@ import {
   ShieldCheck,
   ClipboardCheck,
   LayoutDashboard,
-  MessageCircle,
 } from "lucide-react";
 
 import applicantApi from "../../services/applicantApi";
 
 
 
+// ============================================================
 // HELPERS
+// ============================================================
 
 
 const formatStatus = (status) => {
@@ -113,7 +114,9 @@ const formatCurrency = (value) => {
 
 
 
+// ============================================================
 // SIDEBAR
+// ============================================================
 
 
 function ApplicantSidebar({
@@ -130,10 +133,28 @@ function ApplicantSidebar({
       path: "/applicant/dashboard",
     },
     {
+      id: "application",
+      label: "My Application",
+      icon: ClipboardCheck,
+      path: "/applicant/application",
+    },
+    {
       id: "documents",
       label: "Documents",
       icon: FileText,
       path: "/applicant/documents",
+    },
+    {
+      id: "fees",
+      label: "Fees & Payments",
+      icon: CreditCard,
+      path: "/applicant/fees",
+    },
+    {
+      id: "profile",
+      label: "Profile",
+      icon: User,
+      path: "/applicant/profile",
     },
     {
       id: "assistant",
@@ -162,6 +183,7 @@ function ApplicantSidebar({
           </div>
 
           <div>
+
             <p className="text-[10px] font-bold uppercase tracking-widest text-gray-400">
               CampusFlow AI
             </p>
@@ -169,6 +191,7 @@ function ApplicantSidebar({
             <p className="text-[15px] font-bold text-gray-900">
               Applicant Portal
             </p>
+
           </div>
 
         </div>
@@ -185,7 +208,6 @@ function ApplicantSidebar({
         <p className="mb-3 px-3 text-[10px] font-bold uppercase tracking-widest text-gray-400">
           Portal
         </p>
-
 
         <nav className="space-y-1">
 
@@ -207,11 +229,13 @@ function ApplicantSidebar({
                     : "text-gray-600 hover:bg-gray-100 hover:text-gray-900"
                 }`}
               >
+
                 <Icon size={17} />
 
                 <span>
                   {item.label}
                 </span>
+
               </button>
             );
           })}
@@ -245,11 +269,13 @@ function ApplicantSidebar({
           onClick={onLogout}
           className="flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold text-gray-600 transition hover:bg-gray-100 hover:text-gray-900"
         >
+
           <LogOut size={17} />
 
           <span>
             Logout
           </span>
+
         </button>
 
       </div>
@@ -260,7 +286,9 @@ function ApplicantSidebar({
 
 
 
+// ============================================================
 // COMPONENT
+// ============================================================
 
 
 function ApplicantDashboard() {
@@ -380,7 +408,6 @@ function ApplicantDashboard() {
           onLogout={handleLogout}
         />
 
-
         <main className="ml-[212px] flex min-h-screen items-center justify-center">
 
           <div className="text-center">
@@ -417,7 +444,6 @@ function ApplicantDashboard() {
           onLogout={handleLogout}
         />
 
-
         <main className="ml-[212px] flex min-h-screen items-center justify-center px-6">
 
           <div className="w-full max-w-md rounded-2xl border border-red-200 bg-white p-8 text-center shadow-sm">
@@ -431,26 +457,25 @@ function ApplicantDashboard() {
 
             </div>
 
-
             <h1 className="mt-5 text-xl font-bold text-gray-900">
               Unable to Load Dashboard
             </h1>
-
 
             <p className="mt-2 text-sm leading-6 text-gray-500">
               {error ||
                 "Something went wrong while loading your application."}
             </p>
 
-
             <button
               type="button"
               onClick={loadDashboard}
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
             >
+
               <RefreshCw size={16} />
 
               Try Again
+
             </button>
 
           </div>
@@ -1175,6 +1200,7 @@ function ApplicantDashboard() {
                 to="/applicant/fees"
                 className="inline-flex w-fit items-center gap-2 text-sm font-semibold text-gray-900 transition hover:underline"
               >
+
                 View Fee Details
 
                 <ArrowRight size={15} />
@@ -1288,6 +1314,7 @@ function ApplicantDashboard() {
                 to="/applicant/chat"
                 className="inline-flex w-fit items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
               >
+
                 Ask CampusFlow AI
 
                 <ArrowRight size={16} />
@@ -1308,7 +1335,9 @@ function ApplicantDashboard() {
 
 
 
+// ============================================================
 // STATUS CARD
+// ============================================================
 
 
 function StatusCard({
@@ -1356,7 +1385,9 @@ function StatusCard({
 
 
 
+// ============================================================
 // DETAIL ROW
+// ============================================================
 
 
 function DetailRow({
@@ -1382,7 +1413,9 @@ function DetailRow({
 
 
 
+// ============================================================
 // ACTION LINK
+// ============================================================
 
 
 function ActionLink({
@@ -1437,7 +1470,9 @@ function ActionLink({
 
 
 
+// ============================================================
 // FEE STAT
+// ============================================================
 
 
 function FeeStat({

@@ -1,38 +1,119 @@
-import { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft,
-  ArrowRight,
-  GraduationCap,
-  User,
-  Mail,
-  Phone,
-  BookOpen,
-  CalendarDays,
-  Hash,
-  ShieldCheck,
-  FileText,
-  CreditCard,
-  CheckCircle2,
-  Clock3,
-  AlertCircle,
-  XCircle,
+  Save,
+  Send,
   RefreshCw,
-  ClipboardCheck,
+  AlertCircle,
+  CheckCircle2,
+  Lock,
+  User,
+  Users,
+  MapPin,
+  GraduationCap,
+  BookOpen,
+  Award,
 } from "lucide-react";
 
 import ApplicantLayout from "../../components/layout/ApplicantLayout";
 import applicantApi from "../../services/applicantApi";
 
 
+// ============================================================
+// EMPTY FORM
+// ============================================================
 
+const EMPTY_FORM = {
+  date_of_birth: "",
+  gender: "",
+  category: "",
+  nationality: "",
+
+  father_name: "",
+  mother_name: "",
+
+  address_line: "",
+  city: "",
+  district: "",
+  state: "",
+  pincode: "",
+
+  tenth_school: "",
+  tenth_board: "",
+  tenth_passing_year: "",
+  tenth_roll_number: "",
+  tenth_percentage: "",
+
+  twelfth_school: "",
+  twelfth_board: "",
+  twelfth_stream: "",
+  twelfth_passing_year: "",
+  twelfth_roll_number: "",
+  twelfth_percentage: "",
+
+  jee_attempted: false,
+  jee_year: "",
+  jee_percentile: "",
+  jee_rank: "",
+};
+
+
+// ============================================================
 // HELPERS
+// ============================================================
+
+const buildForm = (application = {}) => {
+  return {
+    ...EMPTY_FORM,
+
+    date_of_birth: application.date_of_birth || "",
+    gender: application.gender || "",
+    category: application.category || "",
+    nationality: application.nationality || "",
+
+    father_name: application.father_name || "",
+    mother_name: application.mother_name || "",
+
+    address_line: application.address_line || "",
+    city: application.city || "",
+    district: application.district || "",
+    state: application.state || "",
+    pincode: application.pincode || "",
+
+    tenth_school: application.tenth_school || "",
+    tenth_board: application.tenth_board || "",
+    tenth_passing_year:
+      application.tenth_passing_year || "",
+    tenth_roll_number:
+      application.tenth_roll_number || "",
+    tenth_percentage:
+      application.tenth_percentage ?? "",
+
+    twelfth_school: application.twelfth_school || "",
+    twelfth_board: application.twelfth_board || "",
+    twelfth_stream: application.twelfth_stream || "",
+    twelfth_passing_year:
+      application.twelfth_passing_year || "",
+    twelfth_roll_number:
+      application.twelfth_roll_number || "",
+    twelfth_percentage:
+      application.twelfth_percentage ?? "",
+
+    jee_attempted:
+      Boolean(application.jee_attempted),
+
+    jee_year: application.jee_year || "",
+    jee_percentile:
+      application.jee_percentile ?? "",
+    jee_rank:
+      application.jee_rank || "",
+  };
+};
 
 
-const formatStatus = (status) => {
-  if (!status) {
-    return "Not Available";
-  }
+const getStatusLabel = (status) => {
+  if (!status) return "Draft";
 
   return String(status)
     .replaceAll("_", " ")
@@ -40,244 +121,179 @@ const formatStatus = (status) => {
 };
 
 
-const getStatusConfig = (status) => {
+const isApplicationLocked = (status) => {
   const normalized = String(status || "").toLowerCase();
 
-  if (
-    normalized.includes("approved") ||
-    normalized.includes("confirmed") ||
-    normalized.includes("verified") ||
-    normalized === "eligible" ||
-    normalized === "paid" ||
-    normalized === "completed"
-  ) {
-    return {
-      label: formatStatus(status),
-      className:
-        "border-green-200 bg-green-50 text-green-700",
-      icon: CheckCircle2,
-    };
-  }
-
-
-  if (
-    normalized.includes("rejected") ||
-    normalized.includes("failed") ||
-    normalized.includes("not_eligible") ||
-    normalized.includes("not eligible")
-  ) {
-    return {
-      label: formatStatus(status),
-      className:
-        "border-red-200 bg-red-50 text-red-700",
-      icon: XCircle,
-    };
-  }
-
-
-  if (
-    normalized.includes("pending") ||
-    normalized.includes("submitted") ||
-    normalized.includes("processing") ||
-    normalized.includes("review_required") ||
-    normalized.includes("incomplete") ||
-    normalized.includes("in_progress")
-  ) {
-    return {
-      label: formatStatus(status),
-      className:
-        "border-amber-200 bg-amber-50 text-amber-700",
-      icon: Clock3,
-    };
-  }
-
-
-  return {
-    label: formatStatus(status),
-    className:
-      "border-gray-200 bg-gray-50 text-gray-700",
-    icon: AlertCircle,
-  };
+  return [
+    "submitted",
+    "approved",
+    "rejected",
+    "confirmed",
+  ].includes(normalized);
 };
 
 
-const getSimpleStatus = (status) => {
-  const normalized = String(status || "").toLowerCase();
+// ============================================================
+// FORM FIELD
+// ============================================================
 
-  if (
-    normalized.includes("approved") ||
-    normalized.includes("confirmed") ||
-    normalized.includes("verified") ||
-    normalized === "eligible" ||
-    normalized === "paid" ||
-    normalized === "completed"
-  ) {
-    return "completed";
-  }
-
-
-  if (
-    normalized.includes("rejected") ||
-    normalized.includes("failed") ||
-    normalized.includes("not_eligible") ||
-    normalized.includes("not eligible")
-  ) {
-    return "rejected";
-  }
-
-
-  return "pending";
-};
-
-
-const formatCurrency = (value) => {
-  const amount = Number(value || 0);
-
-  return `₹${amount.toLocaleString("en-IN")}`;
-};
-
-
-
-// STATUS BADGE
-
-
-function StatusBadge({
-  status,
-}) {
-  const config = getStatusConfig(status);
-
-  const Icon = config.icon;
-
-  return (
-    <span
-      className={`inline-flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-semibold ${config.className}`}
-    >
-      <Icon size={14} />
-
-      {config.label}
-    </span>
-  );
-}
-
-
-
-// INFORMATION ROW
-
-
-function InfoRow({
-  icon,
+function FormField({
   label,
+  name,
   value,
+  onChange,
+  type = "text",
+  placeholder = "",
+  disabled = false,
+  required = false,
 }) {
   return (
-    <div className="flex items-start gap-4 border-b border-gray-100 py-4 last:border-b-0">
+    <div>
+      <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        {label}
+        {required && (
+          <span className="ml-1 text-red-500">*</span>
+        )}
+      </label>
 
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-gray-50 text-gray-500">
-        {icon}
-      </div>
-
-      <div className="min-w-0 flex-1">
-
-        <p className="text-xs font-medium uppercase tracking-wide text-gray-400">
-          {label}
-        </p>
-
-        <p className="mt-1 break-words text-sm font-semibold text-gray-900">
-          {value || "Not provided"}
-        </p>
-
-      </div>
-
+      <input
+        type={type}
+        name={name}
+        value={value ?? ""}
+        onChange={onChange}
+        placeholder={placeholder}
+        disabled={disabled}
+        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition placeholder:text-gray-400 focus:border-gray-900 focus:ring-1 focus:ring-gray-900 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500"
+      />
     </div>
   );
 }
 
 
+// ============================================================
+// SELECT FIELD
+// ============================================================
 
-// PROGRESS STEP
+function SelectField({
+  label,
+  name,
+  value,
+  onChange,
+  options,
+  disabled = false,
+  required = false,
+}) {
+  return (
+    <div>
+      <label className="mb-1.5 block text-sm font-medium text-gray-700">
+        {label}
+        {required && (
+          <span className="ml-1 text-red-500">*</span>
+        )}
+      </label>
+
+      <select
+        name={name}
+        value={value ?? ""}
+        onChange={onChange}
+        disabled={disabled}
+        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition focus:border-gray-900 focus:ring-1 focus:ring-gray-900 disabled:cursor-not-allowed disabled:bg-gray-100 disabled:text-gray-500"
+      >
+        <option value="">
+          Select {label}
+        </option>
+
+        {options.map((option) => (
+          <option
+            key={option.value}
+            value={option.value}
+          >
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
+}
 
 
-function ProgressStep({
+// ============================================================
+// SECTION
+// ============================================================
+
+function FormSection({
+  icon,
   title,
   description,
-  status,
-  last = false,
+  children,
 }) {
-  const isCompleted = status === "completed";
-  const isRejected = status === "rejected";
-  const isPending = status === "pending";
-
   return (
-    <div className="relative flex gap-4">
+    <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
 
-      {!last && (
-        <div
-          className={`absolute left-[15px] top-8 h-[calc(100%-8px)] w-px ${
-            isCompleted
-              ? "bg-gray-900"
-              : "bg-gray-200"
-          }`}
-        />
-      )}
+      <div className="flex items-start gap-3">
 
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-gray-100 text-gray-700">
+          {icon}
+        </div>
 
-      <div
-        className={`
-          relative z-10 flex h-8 w-8 shrink-0
-          items-center justify-center rounded-full border
-          ${
-            isCompleted
-              ? "border-gray-900 bg-gray-900 text-white"
-              : isRejected
-              ? "border-red-300 bg-red-50 text-red-600"
-              : "border-gray-300 bg-white text-gray-400"
-          }
-        `}
-      >
+        <div>
+          <h2 className="font-bold text-gray-900">
+            {title}
+          </h2>
 
-        {isCompleted ? (
-          <CheckCircle2 size={17} />
-        ) : isRejected ? (
-          <XCircle size={17} />
-        ) : (
-          <Clock3 size={16} />
-        )}
+          <p className="mt-1 text-xs leading-5 text-gray-500">
+            {description}
+          </p>
+        </div>
 
       </div>
 
-
-      <div className="pb-7">
-
-        <p className="text-sm font-semibold text-gray-900">
-          {title}
-        </p>
-
-        <p className="mt-1 text-xs leading-5 text-gray-500">
-          {description}
-        </p>
-
+      <div className="mt-6 grid grid-cols-1 gap-5 md:grid-cols-2">
+        {children}
       </div>
 
-    </div>
+    </section>
   );
 }
 
 
-
+// ============================================================
 // APPLICATION PAGE
-
+// ============================================================
 
 function ApplicantApplication() {
   const navigate = useNavigate();
 
-  const [dashboard, setDashboard] =
+  const [application, setApplication] =
     useState(null);
+
+  const [form, setForm] =
+    useState(EMPTY_FORM);
 
   const [loading, setLoading] =
     useState(true);
 
+  const [saving, setSaving] =
+    useState(false);
+
+  const [submitting, setSubmitting] =
+    useState(false);
+
   const [error, setError] =
     useState("");
+
+  const [success, setSuccess] =
+    useState("");
+
+  // ============================================================
+  // LOCK STATUS
+  // ============================================================
+
+  const isLocked = useMemo(() => {
+    return isApplicationLocked(
+      application?.status
+    );
+  }, [application?.status]);
 
 
   // ============================================================
@@ -287,23 +303,16 @@ function ApplicantApplication() {
   const loadApplication = async () => {
     setLoading(true);
     setError("");
+    setSuccess("");
 
     try {
-      /*
-       * We intentionally reuse the existing applicant dashboard
-       * endpoint.
-       *
-       * GET /campus/applicant/dashboard
-       *
-       * It already contains all information required for this page.
-       */
-
       const response =
         await applicantApi.get(
-          "/campus/applicant/dashboard"
+          "/campus/applicant/application"
         );
 
-      setDashboard(response.data);
+      setApplication(response.data);
+      setForm(buildForm(response.data));
 
     } catch (err) {
       console.error(
@@ -349,6 +358,127 @@ function ApplicantApplication() {
 
 
   // ============================================================
+  // INPUT CHANGE
+  // ============================================================
+
+  const handleChange = (event) => {
+    const {
+      name,
+      value,
+      type,
+      checked,
+    } = event.target;
+
+    setForm((previous) => ({
+      ...previous,
+
+      [name]:
+        type === "checkbox"
+          ? checked
+          : value,
+    }));
+
+    setSuccess("");
+    setError("");
+  };
+
+
+  // ============================================================
+  // SAVE DRAFT
+  // ============================================================
+
+  const handleSave = async () => {
+    if (isLocked) return;
+
+    setSaving(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response =
+        await applicantApi.put(
+          "/campus/applicant/application",
+          form
+        );
+
+      setApplication(response.data);
+      setForm(buildForm(response.data));
+
+      setSuccess(
+        "Application draft saved successfully."
+      );
+
+    } catch (err) {
+      console.error(
+        "Failed to save application:",
+        err
+      );
+
+      setError(
+        err.response?.data?.detail ||
+          "Unable to save your application."
+      );
+
+    } finally {
+      setSaving(false);
+    }
+  };
+
+
+  // ============================================================
+  // SUBMIT APPLICATION
+  // ============================================================
+
+  const handleSubmit = async () => {
+    if (isLocked) return;
+
+    if (
+      Number(
+        application?.completion_percentage || 0
+      ) < 100
+    ) {
+      setError(
+        "Please complete all required fields before submitting your application."
+      );
+
+      return;
+    }
+
+    setSubmitting(true);
+    setError("");
+    setSuccess("");
+
+    try {
+      const response =
+        await applicantApi.post(
+          "/campus/applicant/application/submit"
+        );
+
+      setApplication(response.data);
+      setForm(buildForm(response.data));
+
+      setSuccess(
+        "Application submitted successfully."
+      );
+
+    } catch (err) {
+      console.error(
+        "Failed to submit application:",
+        err
+      );
+
+      setError(
+        err.response?.data?.detail ||
+          "Unable to submit your application."
+      );
+
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+
+  // ============================================================
   // LOADING
   // ============================================================
 
@@ -382,7 +512,7 @@ function ApplicantApplication() {
   // ERROR
   // ============================================================
 
-  if (error || !dashboard) {
+  if (error && !application) {
     return (
       <ApplicantLayout>
 
@@ -399,17 +529,13 @@ function ApplicantApplication() {
 
             </div>
 
-
             <h1 className="mt-5 text-xl font-bold text-gray-900">
               Unable to Load Application
             </h1>
 
-
             <p className="mt-2 text-sm leading-6 text-gray-500">
-              {error ||
-                "Something went wrong while loading your application."}
+              {error}
             </p>
-
 
             <button
               type="button"
@@ -417,7 +543,6 @@ function ApplicantApplication() {
               className="mt-6 inline-flex items-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-800"
             >
               <RefreshCw size={16} />
-
               Try Again
             </button>
 
@@ -434,196 +559,16 @@ function ApplicantApplication() {
   // DATA
   // ============================================================
 
-  const student =
-    dashboard.student || {};
-
-  const application =
-    dashboard.application || {};
-
-  const documents = {
-    required: Number(
-      dashboard.documents?.required || 0
-    ),
-
-    submitted: Number(
-      dashboard.documents?.submitted || 0
-    ),
-
-    missing: Number(
-      dashboard.documents?.missing || 0
-    ),
-
-    verification_status:
-      dashboard.documents
-        ?.verification_status ||
-      "not_started",
-  };
-
-
-  const fees = {
-    total: Number(
-      dashboard.fees?.total || 0
-    ),
-
-    paid: Number(
-      dashboard.fees?.paid || 0
-    ),
-
-    pending: Number(
-      dashboard.fees?.pending || 0
-    ),
-
-    mandatory_pending:
-      Boolean(
-        dashboard.fees?.mandatory_pending
-      ),
-  };
-
-
-  // ============================================================
-  // APPLICATION STATUS
-  // ============================================================
-
-  const applicationStatus =
-    getSimpleStatus(
-      application.status
+  const completion =
+    Number(
+      application?.completion_percentage || 0
     );
 
 
-  const eligibilityStatus =
-    getSimpleStatus(
-      application.eligibility_status
-    );
-
-
-  const admissionStatus =
-    getSimpleStatus(
-      application.admission_status
-    );
-
-
-  const documentStatus =
-    documents.missing === 0 &&
-    documents.required > 0
-      ? getSimpleStatus(
-          documents.verification_status
-        )
-      : "pending";
-
-
-  const feeStatus =
-    !fees.mandatory_pending
-      ? "completed"
-      : "pending";
-
-
-  // ============================================================
-  // NEXT STEP
-  // ============================================================
-
-  const getNextStep = () => {
-
-    if (
-      applicationStatus ===
-      "rejected"
-    ) {
-      return {
-        title: "Application requires attention",
-        description:
-          "Your application has been rejected. Please contact the college admission office for further information.",
-        action: null,
-      };
-    }
-
-
-    if (
-      eligibilityStatus ===
-      "rejected"
-    ) {
-      return {
-        title: "Eligibility decision recorded",
-        description:
-          application.eligibility_reason ||
-          "Your application was found not eligible based on the admission review.",
-        action: null,
-      };
-    }
-
-
-    if (
-      documents.missing > 0
-    ) {
-      return {
-        title: "Complete your documents",
-        description:
-          `${documents.missing} required document${
-            documents.missing > 1
-              ? "s"
-              : ""
-          } ${
-            documents.missing > 1
-              ? "are"
-              : "is"
-          } still missing.`,
-        action: {
-          label: "Manage Documents",
-          to: "/applicant/documents",
-        },
-      };
-    }
-
-
-    if (
-      fees.mandatory_pending
-    ) {
-      return {
-        title: "Mandatory fee is pending",
-        description:
-          `${formatCurrency(
-            fees.pending
-          )} is currently pending. Follow the instructions provided by your college for fee payment.`,
-        action: null,
-      };
-    }
-
-
-    if (
-      application.admission_status ===
-      "confirmed"
-    ) {
-      return {
-        title: "Admission confirmed",
-        description:
-          "Your admission has been confirmed. You can continue with the student onboarding process.",
-        action: null,
-      };
-    }
-
-
-    if (
-      application.eligibility_status ===
-      "eligible"
-    ) {
-      return {
-        title: "Eligibility approved",
-        description:
-          "Your eligibility has been approved. Your application is progressing through the admission workflow.",
-        action: null,
-      };
-    }
-
-
-    return {
-      title: "Application is under review",
-      description:
-        "Your application is being processed. Check this page regularly for status updates.",
-      action: null,
-    };
-  };
-
-
-  const nextStep =
-    getNextStep();
+  const status =
+    String(
+      application?.status || "draft"
+    ).toLowerCase();
 
 
   // ============================================================
@@ -633,7 +578,7 @@ function ApplicantApplication() {
   return (
     <ApplicantLayout>
 
-      <div className="mx-auto max-w-6xl space-y-6">
+      <div className="mx-auto max-w-6xl space-y-6 pb-28">
 
         {/* ====================================================
             HEADER
@@ -641,14 +586,16 @@ function ApplicantApplication() {
 
         <div>
 
-          <Link
-            to="/applicant/dashboard"
+          <button
+            type="button"
+            onClick={() =>
+              navigate("/applicant/dashboard")
+            }
             className="inline-flex items-center gap-2 text-sm font-medium text-gray-500 transition hover:text-gray-900"
           >
             <ArrowLeft size={16} />
-
             Back to Dashboard
-          </Link>
+          </button>
 
 
           <div className="mt-5 flex flex-col justify-between gap-5 md:flex-row md:items-end">
@@ -659,800 +606,174 @@ function ApplicantApplication() {
                 Applicant Portal
               </p>
 
-
               <h1 className="mt-1 text-3xl font-bold tracking-tight text-gray-900">
                 My Application
               </h1>
 
-
               <p className="mt-2 max-w-2xl text-sm leading-6 text-gray-500">
-                View your submitted application,
-                eligibility review, admission status,
-                and current requirements.
+                Complete your admission application carefully.
+                You can save it as a draft and continue later.
               </p>
 
             </div>
 
-
-            <button
-              type="button"
-              onClick={loadApplication}
-              disabled={loading}
-              className="inline-flex w-fit items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-50"
-            >
-
-              <RefreshCw
-                size={16}
-                className={
-                  loading
-                    ? "animate-spin"
-                    : ""
-                }
-              />
-
-              Refresh
-            </button>
-
-          </div>
-
-        </div>
-
-
-        {/* ====================================================
-            APPLICATION OVERVIEW
-        ===================================================== */}
-
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-
-            <div className="flex items-start gap-4">
-
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gray-900">
-
-                <ClipboardCheck
-                  size={23}
-                  className="text-white"
-                />
-
-              </div>
-
-
-              <div>
-
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  Application Number
-                </p>
-
-
-                <h2 className="mt-1 break-all text-2xl font-bold tracking-wide text-gray-900">
-                  {application.application_number ||
-                    "Not Available"}
-                </h2>
-
-
-                <p className="mt-2 text-sm text-gray-500">
-                  Your application identifier for admission-related communication.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="flex flex-wrap gap-2">
-
-              <StatusBadge
-                status={
-                  application.status
-                }
-              />
-
-              <StatusBadge
-                status={
-                  application.eligibility_status
-                }
-              />
-
-              <StatusBadge
-                status={
-                  application.admission_status
-                }
-              />
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* ====================================================
-            STATUS SUMMARY
-        ===================================================== */}
-
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-
-          <SummaryCard
-            icon={
-              <FileText
-                size={19}
-                className="text-blue-600"
-              />
-            }
-            iconClass="bg-blue-50"
-            label="Application Status"
-            value={formatStatus(
-              application.status
-            )}
-          />
-
-
-          <SummaryCard
-            icon={
-              <ShieldCheck
-                size={19}
-                className="text-purple-600"
-              />
-            }
-            iconClass="bg-purple-50"
-            label="Eligibility"
-            value={formatStatus(
-              application.eligibility_status
-            )}
-          />
-
-
-          <SummaryCard
-            icon={
-              <GraduationCap
-                size={19}
-                className="text-green-600"
-              />
-            }
-            iconClass="bg-green-50"
-            label="Admission"
-            value={formatStatus(
-              application.admission_status
-            )}
-          />
-
-        </div>
-
-
-        {/* ====================================================
-            MAIN GRID
-        ===================================================== */}
-
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
-          {/* ==================================================
-              APPLICANT INFORMATION
-          =================================================== */}
-
-          <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
 
             <div className="flex items-center gap-3">
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
-
-                <User
-                  size={19}
-                  className="text-gray-700"
-                />
-
-              </div>
-
-
-              <div>
-
-                <h2 className="font-bold text-gray-900">
-                  Applicant Information
-                </h2>
-
-                <p className="text-xs text-gray-500">
-                  Information submitted with your application.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="mt-5">
-
-              <InfoRow
-                icon={<User size={17} />}
-                label="Full Name"
-                value={student.full_name}
-              />
-
-              <InfoRow
-                icon={<Mail size={17} />}
-                label="Email"
-                value={student.email}
-              />
-
-              <InfoRow
-                icon={<Phone size={17} />}
-                label="Phone"
-                value={student.phone}
-              />
-
-              <InfoRow
-                icon={<BookOpen size={17} />}
-                label="Program"
-                value={student.program}
-              />
-
-              <InfoRow
-                icon={<GraduationCap size={17} />}
-                label="Department"
-                value={student.department}
-              />
-
-              <InfoRow
-                icon={<CalendarDays size={17} />}
-                label="Academic Year"
-                value={student.academic_year}
-              />
-
-              <InfoRow
-                icon={<Hash size={17} />}
-                label="Semester"
-                value={student.semester}
-              />
-
-            </div>
-
-          </section>
-
-
-          {/* ==================================================
-              ADMISSION IDENTIFIERS
-          =================================================== */}
-
-          <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-            <div className="flex items-center gap-3">
-
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
-
-                <GraduationCap
-                  size={19}
-                  className="text-gray-700"
-                />
-
-              </div>
-
-
-              <div>
-
-                <h2 className="font-bold text-gray-900">
-                  Admission Information
-                </h2>
-
-                <p className="text-xs text-gray-500">
-                  Campus identifiers assigned during the admission process.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="mt-5">
-
-              <InfoRow
-                icon={<Hash size={17} />}
-                label="Application Number"
-                value={
-                  application.application_number
-                }
-              />
-
-              <InfoRow
-                icon={<Hash size={17} />}
-                label="Admission Number"
-                value={
-                  application.admission_number ||
-                  "Not assigned yet"
-                }
-              />
-
-              <InfoRow
-                icon={<Hash size={17} />}
-                label="Roll Number"
-                value={
-                  application.roll_number ||
-                  "Not assigned yet"
-                }
-              />
-
-              <InfoRow
-                icon={<BookOpen size={17} />}
-                label="Program"
-                value={student.program}
-              />
-
-              <InfoRow
-                icon={<ShieldCheck size={17} />}
-                label="Admission Status"
-                value={formatStatus(
-                  application.admission_status
-                )}
-              />
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        {/* ====================================================
-            ELIGIBILITY
-        ===================================================== */}
-
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-          <div className="flex flex-col gap-5 md:flex-row md:items-start md:justify-between">
-
-            <div className="flex items-start gap-4">
-
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-50">
-
-                <ShieldCheck
-                  size={21}
-                  className="text-purple-600"
-                />
-
-              </div>
-
-
-              <div>
-
-                <h2 className="font-bold text-gray-900">
-                  Eligibility Review
-                </h2>
-
-                <p className="mt-1 text-sm text-gray-500">
-                  Review the current eligibility decision for your application.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <StatusBadge
-              status={
-                application.eligibility_status
-              }
-            />
-
-          </div>
-
-
-          <div className="mt-5 rounded-xl border border-gray-100 bg-gray-50 p-5">
-
-            <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-              Review Result
-            </p>
-
-
-            <p className="mt-2 text-lg font-bold text-gray-900">
-              {formatStatus(
-                application.eligibility_status
-              )}
-            </p>
-
-
-            <div className="mt-4">
-
-              <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                Reason
-              </p>
-
-
-              <p className="mt-2 text-sm leading-6 text-gray-600">
-
-                {application.eligibility_reason ||
-                  "No eligibility reason has been recorded yet. Your application may still be under review."}
-
-              </p>
-
-            </div>
-
-          </div>
-
-        </section>
-
-
-        {/* ====================================================
-            APPLICATION PROGRESS
-        ===================================================== */}
-
-        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-          <div className="flex items-center gap-3">
-
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-900">
-
-              <ClipboardCheck
-                size={19}
-                className="text-white"
-              />
-
-            </div>
-
-
-            <div>
-
-              <h2 className="font-bold text-gray-900">
-                Admission Progress
-              </h2>
-
-              <p className="text-xs text-gray-500">
-                Track the major stages of your application.
-              </p>
-
-            </div>
-
-          </div>
-
-
-          <div className="mt-7">
-
-            <ProgressStep
-              title="Application Submitted"
-              description={
-                application.status
-                  ? `Current application status: ${formatStatus(
-                      application.status
-                    )}.`
-                  : "Application information received."
-              }
-              status={
-                applicationStatus
-              }
-            />
-
-
-            <ProgressStep
-              title="Eligibility Review"
-              description={
-                application.eligibility_status
-                  ? `Eligibility status: ${formatStatus(
-                      application.eligibility_status
-                    )}.`
-                  : "Eligibility review has not been completed."
-              }
-              status={
-                eligibilityStatus
-              }
-            />
-
-
-            <ProgressStep
-              title="Document Submission"
-              description={
-                documents.missing > 0
-                  ? `${documents.submitted} of ${documents.required} required documents submitted.`
-                  : documents.required > 0
-                  ? "All required documents have been submitted."
-                  : "No document requirement information is available."
-              }
-              status={
-                documentStatus
-              }
-            />
-
-
-            <ProgressStep
-              title="Fee Requirement"
-              description={
-                fees.mandatory_pending
-                  ? `${formatCurrency(
-                      fees.pending
-                    )} is currently pending.`
-                  : "No mandatory fee is currently pending."
-              }
-              status={
-                feeStatus
-              }
-            />
-
-
-            <ProgressStep
-              title="Admission Decision"
-              description={
-                application.admission_status
-                  ? `Admission status: ${formatStatus(
-                      application.admission_status
-                    )}.`
-                  : "Admission decision is pending."
-              }
-              status={
-                admissionStatus
-              }
-              last
-            />
-
-          </div>
-
-        </section>
-
-
-        {/* ====================================================
-            DOCUMENT + FEE SNAPSHOT
-        ===================================================== */}
-
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
-
-          {/* Documents */}
-
-          <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-            <div className="flex items-center justify-between gap-4">
-
-              <div className="flex items-center gap-3">
-
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-50">
-
-                  <FileText
-                    size={19}
-                    className="text-amber-600"
-                  />
-
-                </div>
-
-
-                <div>
-
-                  <h2 className="font-bold text-gray-900">
-                    Documents
-                  </h2>
-
-                  <p className="text-xs text-gray-500">
-                    Required admission documents.
-                  </p>
-
-                </div>
-
-              </div>
-
-
-              <Link
-                to="/applicant/documents"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-900 hover:underline"
+              <span className="rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-semibold text-gray-700">
+                {getStatusLabel(status)}
+              </span>
+
+              <button
+                type="button"
+                onClick={loadApplication}
+                disabled={loading}
+                className="inline-flex items-center gap-2 rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm font-semibold text-gray-700 shadow-sm transition hover:bg-gray-50 disabled:opacity-50"
               >
-                Manage
-                <ArrowRight size={15} />
-              </Link>
-
-            </div>
-
-
-            <div className="mt-5">
-
-              <div className="flex items-end justify-between">
-
-                <div>
-
-                  <p className="text-2xl font-bold text-gray-900">
-                    {documents.submitted}
-                    <span className="text-base font-medium text-gray-400">
-                      {" "}
-                      / {documents.required}
-                    </span>
-                  </p>
-
-                  <p className="mt-1 text-xs text-gray-500">
-                    Documents submitted
-                  </p>
-
-                </div>
-
-
-                <StatusBadge
-                  status={
-                    documents.verification_status
+                <RefreshCw
+                  size={16}
+                  className={
+                    loading
+                      ? "animate-spin"
+                      : ""
                   }
                 />
 
+                Refresh
+              </button>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        {/* ====================================================
+            LOCKED NOTICE
+        ===================================================== */}
+
+        {isLocked && (
+          <div className="rounded-2xl border border-amber-200 bg-amber-50 p-5">
+
+            <div className="flex items-start gap-3">
+
+              <Lock
+                size={20}
+                className="mt-0.5 shrink-0 text-amber-700"
+              />
+
+              <div>
+
+                <p className="font-semibold text-amber-900">
+                  Application is locked
+                </p>
+
+                <p className="mt-1 text-sm leading-6 text-amber-800">
+                  Your application has been{" "}
+                  <strong>
+                    {getStatusLabel(status).toLowerCase()}
+                  </strong>
+                  . The submitted information can no longer
+                  be edited from the applicant portal.
+                </p>
+
               </div>
 
+            </div>
 
-              <div className="mt-4 h-2 overflow-hidden rounded-full bg-gray-100">
+          </div>
+        )}
+
+
+        {/* ====================================================
+            ERROR / SUCCESS
+        ===================================================== */}
+
+        {error && (
+          <div className="rounded-2xl border border-red-200 bg-red-50 p-4">
+
+            <div className="flex items-start gap-3">
+
+              <AlertCircle
+                size={19}
+                className="mt-0.5 shrink-0 text-red-600"
+              />
+
+              <p className="text-sm font-medium text-red-700">
+                {error}
+              </p>
+
+            </div>
+
+          </div>
+        )}
+
+
+        {success && (
+          <div className="rounded-2xl border border-green-200 bg-green-50 p-4">
+
+            <div className="flex items-start gap-3">
+
+              <CheckCircle2
+                size={19}
+                className="mt-0.5 shrink-0 text-green-600"
+              />
+
+              <p className="text-sm font-medium text-green-700">
+                {success}
+              </p>
+
+            </div>
+
+          </div>
+        )}
+
+
+        {/* ====================================================
+            COMPLETION
+        ===================================================== */}
+
+        <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
+
+          <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+
+            <div>
+
+              <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
+                Application Completion
+              </p>
+
+              <p className="mt-1 text-2xl font-bold text-gray-900">
+                {completion}%
+              </p>
+
+            </div>
+
+
+            <div className="w-full md:max-w-md">
+
+              <div className="h-3 overflow-hidden rounded-full bg-gray-100">
 
                 <div
                   className="h-full rounded-full bg-gray-900 transition-all duration-500"
                   style={{
-                    width:
-                      documents.required > 0
-                        ? `${Math.min(
-                            100,
-                            Math.round(
-                              (documents.submitted /
-                                documents.required) *
-                                100
-                            )
-                          )}%`
-                        : "0%",
+                    width: `${Math.min(
+                      100,
+                      completion
+                    )}%`,
                   }}
                 />
 
               </div>
 
-
               <p className="mt-2 text-xs text-gray-500">
-
-                {documents.missing > 0
-                  ? `${documents.missing} required document${
-                      documents.missing > 1
-                        ? "s"
-                        : ""
-                    } remaining.`
-                  : "All required documents submitted."}
-
+                {completion === 100
+                  ? "All required information is complete."
+                  : "Complete all required fields before submitting."}
               </p>
 
             </div>
-
-          </section>
-
-
-          {/* Fees */}
-
-          <section className="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
-
-            <div className="flex items-center gap-3">
-
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-green-50">
-
-                <CreditCard
-                  size={19}
-                  className="text-green-600"
-                />
-
-              </div>
-
-
-              <div>
-
-                <h2 className="font-bold text-gray-900">
-                  Fee Summary
-                </h2>
-
-                <p className="text-xs text-gray-500">
-                  Current recorded admission fees.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            <div className="mt-5 grid grid-cols-3 gap-3">
-
-              <FeeItem
-                label="Total"
-                value={formatCurrency(
-                  fees.total
-                )}
-              />
-
-              <FeeItem
-                label="Paid"
-                value={formatCurrency(
-                  fees.paid
-                )}
-                valueClass="text-green-700"
-              />
-
-              <FeeItem
-                label="Pending"
-                value={formatCurrency(
-                  fees.pending
-                )}
-                valueClass="text-amber-700"
-              />
-
-            </div>
-
-
-            <div className="mt-4 rounded-xl border border-gray-100 bg-gray-50 p-4">
-
-              <div className="flex items-center gap-2">
-
-                {fees.mandatory_pending ? (
-                  <Clock3
-                    size={16}
-                    className="text-amber-600"
-                  />
-                ) : (
-                  <CheckCircle2
-                    size={16}
-                    className="text-green-600"
-                  />
-                )}
-
-
-                <p className="text-sm font-semibold text-gray-900">
-
-                  {fees.mandatory_pending
-                    ? "Mandatory fee pending"
-                    : "No mandatory fee pending"}
-
-                </p>
-
-              </div>
-
-
-              <p className="mt-1 text-xs leading-5 text-gray-500">
-
-                {fees.mandatory_pending
-                  ? "Complete the required fee payment according to your college's payment instructions."
-                  : "There is currently no mandatory unpaid fee recorded for your application."}
-
-              </p>
-
-            </div>
-
-          </section>
-
-        </div>
-
-
-        {/* ====================================================
-            NEXT STEP
-        ===================================================== */}
-
-        <section className="overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 p-6 text-white shadow-sm">
-
-          <div className="flex flex-col gap-5 md:flex-row md:items-center md:justify-between">
-
-            <div className="flex items-start gap-4">
-
-              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-white/10">
-
-                <AlertCircle size={21} />
-
-              </div>
-
-
-              <div>
-
-                <p className="text-xs font-semibold uppercase tracking-wider text-gray-400">
-                  Current Next Step
-                </p>
-
-
-                <h2 className="mt-1 text-lg font-bold">
-                  {nextStep.title}
-                </h2>
-
-
-                <p className="mt-1 max-w-2xl text-sm leading-6 text-gray-300">
-                  {nextStep.description}
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {nextStep.action && (
-              <Link
-                to={nextStep.action.to}
-                className="inline-flex w-fit shrink-0 items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-gray-900 transition hover:bg-gray-100"
-              >
-                {nextStep.action.label}
-
-                <ArrowRight size={16} />
-              </Link>
-            )}
 
           </div>
 
@@ -1460,151 +781,494 @@ function ApplicantApplication() {
 
 
         {/* ====================================================
-            QUICK LINKS
+            PERSONAL INFORMATION
         ===================================================== */}
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <FormSection
+          icon={<User size={19} />}
+          title="Personal Information"
+          description="Enter your basic personal details."
+        >
 
-          <Link
-            to="/applicant/documents"
-            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-gray-300 hover:shadow-md"
-          >
+          <FormField
+            label="Date of Birth"
+            name="date_of_birth"
+            type="date"
+            value={form.date_of_birth}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
 
-            <div className="flex items-center justify-between">
+          <SelectField
+            label="Gender"
+            name="gender"
+            value={form.gender}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+            options={[
+              {
+                value: "male",
+                label: "Male",
+              },
+              {
+                value: "female",
+                label: "Female",
+              },
+              {
+                value: "other",
+                label: "Other",
+              },
+            ]}
+          />
 
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
+          <SelectField
+            label="Category"
+            name="category"
+            value={form.category}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+            options={[
+              {
+                value: "general",
+                label: "General",
+              },
+              {
+                value: "obc",
+                label: "OBC",
+              },
+              {
+                value: "sc",
+                label: "SC",
+              },
+              {
+                value: "st",
+                label: "ST",
+              },
+              {
+                value: "ews",
+                label: "EWS",
+              },
+            ]}
+          />
 
-                <FileText
-                  size={19}
-                  className="text-gray-700"
-                />
+          <FormField
+            label="Nationality"
+            name="nationality"
+            value={form.nationality}
+            onChange={handleChange}
+            placeholder="Indian"
+            disabled={isLocked}
+            required
+          />
 
-              </div>
+        </FormSection>
 
 
-              <ArrowRight
-                size={17}
-                className="text-gray-400 transition group-hover:translate-x-1 group-hover:text-gray-900"
+        {/* ====================================================
+            PARENT / GUARDIAN
+        ===================================================== */}
+
+        <FormSection
+          icon={<Users size={19} />}
+          title="Parent / Guardian Information"
+          description="Provide your parent or guardian details."
+        >
+
+          <FormField
+            label="Father's Name"
+            name="father_name"
+            value={form.father_name}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Mother's Name"
+            name="mother_name"
+            value={form.mother_name}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+        </FormSection>
+
+
+        {/* ====================================================
+            ADDRESS
+        ===================================================== */}
+
+        <FormSection
+          icon={<MapPin size={19} />}
+          title="Address"
+          description="Enter your current residential address."
+        >
+
+          <div className="md:col-span-2">
+            <FormField
+              label="Address"
+              name="address_line"
+              value={form.address_line}
+              onChange={handleChange}
+              placeholder="House number, street, locality"
+              disabled={isLocked}
+              required
+            />
+          </div>
+
+          <FormField
+            label="City"
+            name="city"
+            value={form.city}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="District"
+            name="district"
+            value={form.district}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="State"
+            name="state"
+            value={form.state}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Pincode"
+            name="pincode"
+            value={form.pincode}
+            onChange={handleChange}
+            type="text"
+            placeholder="6 digit pincode"
+            disabled={isLocked}
+            required
+          />
+
+        </FormSection>
+
+
+        {/* ====================================================
+            10TH
+        ===================================================== */}
+
+        <FormSection
+          icon={<BookOpen size={19} />}
+          title="10th / Secondary Education"
+          description="Enter your Class 10 academic details."
+        >
+
+          <FormField
+            label="School"
+            name="tenth_school"
+            value={form.tenth_school}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Board"
+            name="tenth_board"
+            value={form.tenth_board}
+            onChange={handleChange}
+            placeholder="CBSE / ICSE / State Board"
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Passing Year"
+            name="tenth_passing_year"
+            value={form.tenth_passing_year}
+            onChange={handleChange}
+            type="number"
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Roll Number"
+            name="tenth_roll_number"
+            value={form.tenth_roll_number}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Percentage"
+            name="tenth_percentage"
+            value={form.tenth_percentage}
+            onChange={handleChange}
+            type="number"
+            placeholder="Example: 85.5"
+            disabled={isLocked}
+            required
+          />
+
+        </FormSection>
+
+
+        {/* ====================================================
+            12TH
+        ===================================================== */}
+
+        <FormSection
+          icon={<GraduationCap size={19} />}
+          title="12th / Senior Secondary Education"
+          description="Enter your Class 12 academic details."
+        >
+
+          <FormField
+            label="School"
+            name="twelfth_school"
+            value={form.twelfth_school}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Board"
+            name="twelfth_board"
+            value={form.twelfth_board}
+            onChange={handleChange}
+            placeholder="CBSE / ICSE / State Board"
+            disabled={isLocked}
+            required
+          />
+
+          <SelectField
+            label="Stream"
+            name="twelfth_stream"
+            value={form.twelfth_stream}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+            options={[
+              {
+                value: "science",
+                label: "Science",
+              },
+              {
+                value: "commerce",
+                label: "Commerce",
+              },
+              {
+                value: "arts",
+                label: "Arts / Humanities",
+              },
+              {
+                value: "other",
+                label: "Other",
+              },
+            ]}
+          />
+
+          <FormField
+            label="Passing Year"
+            name="twelfth_passing_year"
+            value={form.twelfth_passing_year}
+            onChange={handleChange}
+            type="number"
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Roll Number"
+            name="twelfth_roll_number"
+            value={form.twelfth_roll_number}
+            onChange={handleChange}
+            disabled={isLocked}
+            required
+          />
+
+          <FormField
+            label="Percentage"
+            name="twelfth_percentage"
+            value={form.twelfth_percentage}
+            onChange={handleChange}
+            type="number"
+            placeholder="Example: 79"
+            disabled={isLocked}
+            required
+          />
+
+        </FormSection>
+
+
+        {/* ====================================================
+            JEE
+        ===================================================== */}
+
+        <FormSection
+          icon={<Award size={19} />}
+          title="JEE / Entrance Examination"
+          description="Provide JEE information if you attempted the examination."
+        >
+
+          <div className="md:col-span-2">
+
+            <label className="flex cursor-pointer items-center gap-3">
+
+              <input
+                type="checkbox"
+                name="jee_attempted"
+                checked={form.jee_attempted}
+                onChange={handleChange}
+                disabled={isLocked}
+                className="h-4 w-4 rounded border-gray-300"
               />
+
+              <span className="text-sm font-medium text-gray-700">
+                I have attempted JEE / entrance examination
+              </span>
+
+            </label>
+
+          </div>
+
+
+          {form.jee_attempted && (
+            <>
+              <FormField
+                label="JEE Year"
+                name="jee_year"
+                value={form.jee_year}
+                onChange={handleChange}
+                type="number"
+                disabled={isLocked}
+                required
+              />
+
+              <FormField
+                label="JEE Percentile"
+                name="jee_percentile"
+                value={form.jee_percentile}
+                onChange={handleChange}
+                type="number"
+                step="0.01"
+                placeholder="Example: 95.42"
+                disabled={isLocked}
+                required
+              />
+
+              <FormField
+                label="JEE Rank"
+                name="jee_rank"
+                value={form.jee_rank}
+                onChange={handleChange}
+                type="number"
+                disabled={isLocked}
+                required
+              />
+            </>
+          )}
+
+        </FormSection>
+
+      </div>
+
+
+      {/* ======================================================
+          ACTION BAR
+      ======================================================= */}
+
+      {!isLocked && (
+        <div className="fixed bottom-0 left-0 right-0 z-40 border-t border-gray-200 bg-white/95 px-4 py-4 shadow-lg backdrop-blur">
+
+          <div className="mx-auto flex max-w-6xl flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+
+            <div>
+
+              <p className="text-sm font-semibold text-gray-900">
+                {completion}% complete
+              </p>
+
+              <p className="text-xs text-gray-500">
+                Save your progress anytime.
+              </p>
 
             </div>
 
 
-            <h3 className="mt-4 font-bold text-gray-900">
-              Manage Documents
-            </h3>
+            <div className="flex flex-col gap-2 sm:flex-row">
+
+              <button
+                type="button"
+                onClick={handleSave}
+                disabled={
+                  saving ||
+                  submitting
+                }
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-5 py-3 text-sm font-semibold text-gray-700 transition hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
+              >
+
+                {saving ? (
+                  <RefreshCw
+                    size={16}
+                    className="animate-spin"
+                  />
+                ) : (
+                  <Save size={16} />
+                )}
+
+                {saving
+                  ? "Saving..."
+                  : "Save Draft"}
+
+              </button>
 
 
-            <p className="mt-1 text-sm text-gray-500">
-              Upload missing documents and check verification status.
-            </p>
+              <button
+                type="button"
+                onClick={handleSubmit}
+                disabled={
+                  saving ||
+                  submitting ||
+                  completion < 100
+                }
+                className="inline-flex items-center justify-center gap-2 rounded-xl bg-gray-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-gray-800 disabled:cursor-not-allowed disabled:opacity-50"
+              >
 
-          </Link>
+                {submitting ? (
+                  <RefreshCw
+                    size={16}
+                    className="animate-spin"
+                  />
+                ) : (
+                  <Send size={16} />
+                )}
 
+                {submitting
+                  ? "Submitting..."
+                  : "Submit Application"}
 
-          <Link
-            to="/applicant/chat"
-            className="group rounded-2xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-gray-300 hover:shadow-md"
-          >
-
-            <div className="flex items-center justify-between">
-
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gray-100">
-
-                <GraduationCap
-                  size={19}
-                  className="text-gray-700"
-                />
-
-              </div>
-
-
-              <ArrowRight
-                size={17}
-                className="text-gray-400 transition group-hover:translate-x-1 group-hover:text-gray-900"
-              />
+              </button>
 
             </div>
 
-
-            <h3 className="mt-4 font-bold text-gray-900">
-              Ask CampusFlow AI
-            </h3>
-
-
-            <p className="mt-1 text-sm text-gray-500">
-              Ask about your admission, documents, fees, or college information.
-            </p>
-
-          </Link>
+          </div>
 
         </div>
-
-      </div>
+      )}
 
     </ApplicantLayout>
-  );
-}
-
-
-
-// SUMMARY CARD
-
-
-function SummaryCard({
-  icon,
-  iconClass,
-  label,
-  value,
-}) {
-  return (
-    <div className="rounded-2xl border border-gray-200 bg-white p-5 shadow-sm">
-
-      <div
-        className={`flex h-10 w-10 items-center justify-center rounded-xl ${iconClass}`}
-      >
-        {icon}
-      </div>
-
-
-      <p className="mt-4 text-sm font-medium text-gray-500">
-        {label}
-      </p>
-
-
-      <p className="mt-1 truncate text-lg font-bold text-gray-900">
-        {value}
-      </p>
-
-    </div>
-  );
-}
-
-
-
-// FEE ITEM
-
-
-function FeeItem({
-  label,
-  value,
-  valueClass = "text-gray-900",
-}) {
-  return (
-    <div className="rounded-xl border border-gray-100 bg-gray-50 p-3">
-
-      <p className="text-xs font-medium text-gray-400">
-        {label}
-      </p>
-
-
-      <p
-        className={`mt-1 text-sm font-bold ${valueClass}`}
-      >
-        {value}
-      </p>
-
-    </div>
   );
 }
 
