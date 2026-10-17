@@ -1,0 +1,21 @@
+
+flowchart TD
+    U["Student"]
+    UI["ASI:One / Agent Chat"]
+    R["Campus Gateway Router"]
+    A["Admission Agent"]
+    O["Onboarding Agent"]
+    K["Knowledge Agent"]
+    P[("Campus Policy Knowledge Base")]
+    
+    U --> UI
+    UI --> R
+    R --> A
+    R --> O
+    R --> K
+    K --> P
+    A --> R
+    O --> R
+    K --> R
+    R --> UI
+    UI --> U

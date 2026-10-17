@@ -1,0 +1,20 @@
+[
+  {
+    "id": "POL-001",
+    "title": "Hostel onboarding",
+    "source": "DEMO_POLICY_NOT_OFFICIAL",
+    "text": "Illustrative policy only: students should check the official hostel notice for required documents, fee deadline, and room-allocation instructions."
+  },
+  {
+    "id": "POL-002",
+    "title": "Library registration",
+    "source": "DEMO_POLICY_NOT_OFFICIAL",
+    "text": "Illustrative policy only: students should provide their student ID and follow the library's published registration process."
+  },
+  {
+    "id": "POL-003",
+    "title": "Admission document review",
+    "source": "DEMO_POLICY_NOT_OFFICIAL",
+    "text": "Illustrative policy only: this demo record does not contain an official admission document checklist. Required documents may vary by program and applicant category. Consult the current official admission notice or prospectus, or contact authorized admissions staff. Unclear or inconsistent documents must be referred to authorized admissions staff."
+  }
+]
